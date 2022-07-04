@@ -16,7 +16,6 @@ public partial class MainWindow : Window
     private void ShowAuthorizationWindow()
     {
         logInPage = new LogInPage(this, bank);
-        //logInPage.Owner = this;
         logInPage.ShowDialog();
     }
 }
