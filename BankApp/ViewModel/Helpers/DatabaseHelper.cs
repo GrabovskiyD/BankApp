@@ -9,7 +9,7 @@ namespace BankApp.ViewModel.Helpers
     {
         private static readonly string dbPath = Path.Combine(Environment.CurrentDirectory, "Clients.db3");
 
-        public static bool Insert<T>(T item) where T : new()
+        public static bool Insert<T>(T item)
         {
             bool result = false;
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
@@ -23,7 +23,7 @@ namespace BankApp.ViewModel.Helpers
             }
             return result;
         }
-        public static bool Update<T>(T item) where T : new()
+        public static bool Update<T>(T item)
         {
             bool result = false;
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
@@ -37,7 +37,7 @@ namespace BankApp.ViewModel.Helpers
             }
             return result;
         }
-        public static bool Delete<T>(T item) where T : new()
+        public static bool Delete<T>(T item)
         {
             bool result = false;
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
@@ -53,7 +53,7 @@ namespace BankApp.ViewModel.Helpers
         }
         public static List<T> Read<T>() where T : new()
         {
-            List<T> items = new List<T>();
+            List<T> items;
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 conn.CreateTable<T>();
