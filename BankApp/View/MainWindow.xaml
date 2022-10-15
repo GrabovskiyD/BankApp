@@ -218,9 +218,10 @@
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
             </Grid>
-            <DockPanel>
-                <Button Content="Добавить нового клиента" 
-                        Margin="10, 0"/>
+            <DockPanel Height="30">
+                <Button Content="Добавить нового клиента"
+                        Margin="10, 0"
+                        Command="{Binding OpenNewClientWindowCommand}"/>
                 <Button Content="Удалить информацию о клиенте"
                         Margin="10, 0"/>
                 <Button Content="Сохранить изменения"

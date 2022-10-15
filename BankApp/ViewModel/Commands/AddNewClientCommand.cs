@@ -9,26 +9,16 @@ namespace BankApp.ViewModel.Commands
 {
     public class AddNewClientCommand : ICommand
     {
-        public MainWindowVM mainWindowVM { get; set; }
-        public AddNewClientCommand(MainWindowVM mainWindowVM)
-        {
-            this.mainWindowVM = mainWindowVM;
-        }
-
-        public event EventHandler? CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
-        }
+        public event EventHandler? CanExecuteChanged;
 
         public bool CanExecute(object? parameter)
         {
-            return true;
+            throw new NotImplementedException();
         }
 
         public void Execute(object? parameter)
         {
-            //TODO: add new client to db
+            throw new NotImplementedException();
         }
     }
 }

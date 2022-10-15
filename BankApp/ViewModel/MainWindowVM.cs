@@ -36,10 +36,10 @@ namespace BankApp.ViewModel
 		}
 
 
-		public AddNewClientCommand AddNewClientCommand { get; set; }
+		public OpenNewClientWindowCommand OpenNewClientWindowCommand { get; set; }
 		public MainWindowVM()
 		{
-			AddNewClientCommand = new AddNewClientCommand(this);
+            OpenNewClientWindowCommand = new OpenNewClientWindowCommand(this);
 			Clients = new ObservableCollection<Client>();
 		}
 
