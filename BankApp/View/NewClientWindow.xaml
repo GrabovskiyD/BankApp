@@ -129,7 +129,7 @@
                         BorderBrush="LightGray"
                         BorderThickness="1"
                         Width="350"
-                        Text="{Binding Client.LastName}"
+                        Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         FontSize="14"
                         FontWeight="Medium"
                         FontFamily="Tahoma"/>
@@ -144,7 +144,7 @@
                         BorderBrush="LightGray"
                         BorderThickness="1"
                         Width="350"
-                        Text="{Binding Client.FirstName}"
+                        Text="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         FontSize="14"
                         FontWeight="Medium"
                         FontFamily="Tahoma"/>
@@ -159,7 +159,7 @@
                         BorderBrush="LightGray"
                         BorderThickness="1"
                         Width="350"
-                        Text="{Binding Client.MiddleName}"
+                        Text="{Binding MiddleName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         FontSize="14"
                         FontWeight="Medium"
                         FontFamily="Tahoma"/>
@@ -174,7 +174,7 @@
                         BorderBrush="LightGray"
                         BorderThickness="1"
                         Width="350"
-                        Text="{Binding Client.PhoneNumber}"
+                        Text="{Binding PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         FontSize="14"
                         FontWeight="Medium"
                         FontFamily="Tahoma"/>
@@ -189,7 +189,7 @@
                         BorderBrush="LightGray"
                         BorderThickness="1"
                         Width="350"
-                        Text="{Binding Client.PassportSeries}"
+                        Text="{Binding PassportSeries, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         FontSize="14"
                         FontWeight="Medium"
                         FontFamily="Tahoma"/>
@@ -204,7 +204,7 @@
                         BorderBrush="LightGray"
                         BorderThickness="1"
                         Width="350"
-                        Text="{Binding Client.PassportNumber}"
+                        Text="{Binding PassportNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         FontSize="14"
                         FontWeight="Medium"
                         FontFamily="Tahoma"/>
@@ -213,7 +213,8 @@
             <Button Content="Добавить клиента" 
                     Height="40"
                     Margin="10, 0"
-                    Command="{Binding AddNewClientCommand}"/>
+                    Command="{Binding AddNewClientCommand}"
+                    CommandParameter="{Binding Client}"/>
         </DockPanel>
     </StackPanel>
 </Window>

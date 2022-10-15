@@ -10,10 +10,10 @@ namespace BankApp.ViewModel.Commands
 {
     public class OpenNewClientWindowCommand : ICommand
     {
-        public MainWindowVM mainWindowVM { get; set; }
+        public MainWindowVM MainWindowVM { get; set; }
         public OpenNewClientWindowCommand(MainWindowVM mainWindowVM)
         {
-            this.mainWindowVM = mainWindowVM;
+            MainWindowVM = mainWindowVM;
         }
 
         public event EventHandler? CanExecuteChanged;
