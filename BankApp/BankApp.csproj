@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModel\Commands\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
   </ItemGroup>
 

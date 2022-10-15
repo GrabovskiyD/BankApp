@@ -20,5 +20,15 @@ namespace BankApp.ViewModel
 			set { client = value; }
 		}
 
+		private Client selectedClient;
+		public Client SelectedClient
+		{
+			get { return selectedClient; }
+			set
+			{
+				selectedClient = value;
+			}
+		}
+
 	}
 }
