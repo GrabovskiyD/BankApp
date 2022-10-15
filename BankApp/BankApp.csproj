@@ -10,7 +10,10 @@
   <ItemGroup>
     <Folder Include="ViewModel\Helpers\" />
     <Folder Include="ViewModel\Commands\" />
-    <Folder Include="Model\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
   </ItemGroup>
 
 </Project>
