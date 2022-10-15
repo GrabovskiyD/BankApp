@@ -41,6 +41,7 @@ namespace BankApp.ViewModel
 		{
             OpenNewClientWindowCommand = new OpenNewClientWindowCommand(this);
 			Clients = new ObservableCollection<Client>();
+			GetClients();
 		}
 
 		private void GetClients()

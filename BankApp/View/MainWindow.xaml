@@ -138,7 +138,7 @@
                          BorderBrush="LightGray"
                          BorderThickness="1"
                          Width="320"
-                         Text="{Binding Client.LastName}"
+                         Text="{Binding SelectedClient.LastName}"
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
@@ -153,7 +153,7 @@
                          BorderBrush="LightGray"
                          BorderThickness="1"
                          Width="320"
-                         Text="{Binding Client.FirstName}"
+                         Text="{Binding SelectedClient.FirstName}"
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
@@ -168,7 +168,7 @@
                          BorderBrush="LightGray"
                          BorderThickness="1"
                          Width="320"
-                         Text="{Binding Client.MiddleName}"
+                         Text="{Binding SelectedClient.MiddleName}"
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
@@ -183,7 +183,7 @@
                          BorderBrush="LightGray"
                          BorderThickness="1"
                          Width="320"
-                         Text="{Binding Client.PhoneNumber}"
+                         Text="{Binding SelectedClient.PhoneNumber}"
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
@@ -198,7 +198,7 @@
                          BorderBrush="LightGray"
                          BorderThickness="1"
                          Width="320"
-                         Text="{Binding Client.PassportSeries}"
+                         Text="{Binding SelectedClient.PassportSeries}"
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
@@ -213,7 +213,7 @@
                          BorderBrush="LightGray"
                          BorderThickness="1"
                          Width="320"
-                         Text="{Binding Client.PassportNumber}"
+                         Text="{Binding SelectedClient.PassportNumber}"
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>

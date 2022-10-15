@@ -1,10 +1,12 @@
 ﻿using BankApp.Model;
 using BankApp.View;
+using BankApp.ViewModel.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace BankApp.ViewModel.Commands
@@ -51,7 +53,9 @@ namespace BankApp.ViewModel.Commands
 
         public void Execute(object? parameter)
         {
-            throw new NotImplementedException();
+            Client client = parameter as Client;
+            MessageBox.Show(DatabaseHelper.Insert(client).ToString());
+
         }
     }
 }
