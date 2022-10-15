@@ -6,11 +6,226 @@
         xmlns:local="clr-namespace:BankApp.View"
         xmlns:vm="clr-namespace:BankApp.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <vm:MainWindowVM x:Key="vm"/>
     </Window.Resources>
-    <Grid DataContext="{StaticResource vm}">
-        
-    </Grid>
+    <StackPanel Orientation="Horizontal" DataContext="{StaticResource vm}">
+        <ListView ItemsSource="{Binding Clients}" 
+                  Width="300" 
+                  Margin="5"
+                  SelectedValue="{Binding SelectedClient, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding LastName}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Width="520" Margin="5">
+            <TextBox Text="Персональные данные клиента" 
+                     IsReadOnly="True" 
+                     HorizontalAlignment="Center" 
+                     VerticalAlignment="Center"
+                     BorderThickness="0"
+                     FontSize="18"
+                     FontWeight="Bold"
+                     FontFamily="Tahoma"/>
+            <Grid Margin="10, 30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Column="0" 
+                         Grid.Row="0"
+                         IsReadOnly="True"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Left"
+                         Margin="0, 10"
+                         Height="30"
+                         BorderThickness="0"
+                         Text="Фамилия"
+                         FontSize="14"
+                         FontWeight="Medium"
+                         FontFamily="Tahoma"/>
+                <TextBox Grid.Column="0" 
+                         Grid.Row="1"
+                         IsReadOnly="True"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Left"
+                         Margin="0, 10"
+                         Height="30"
+                         BorderThickness="0"
+                         Text="Имя"
+                         FontSize="14"
+                         FontWeight="Medium"
+                         FontFamily="Tahoma"/>
+                <TextBox Grid.Column="0" 
+                         Grid.Row="2"
+                         IsReadOnly="True"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Left"
+                         Margin="0, 10"
+                         Height="30"
+                         BorderThickness="0"
+                         Text="Отчество"
+                         FontSize="14"
+                         FontWeight="Medium"
+                         FontFamily="Tahoma"/>
+                <TextBox Grid.Column="0" 
+                         Grid.Row="3"
+                         IsReadOnly="True"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Left"
+                         Margin="0, 10"
+                         Height="30"
+                         BorderThickness="0"
+                         Text="Номер телефона"
+                         FontSize="14"
+                         FontWeight="Medium"
+                         FontFamily="Tahoma"/>
+                <TextBox Grid.Column="0" 
+                         Grid.Row="4"
+                         IsReadOnly="True"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Left"
+                         Margin="0, 10"
+                         Height="30"
+                         BorderThickness="0"
+                         Text="Серия паспорта"
+                         FontSize="14"
+                         FontWeight="Medium"
+                         FontFamily="Tahoma"/>
+                <TextBox Grid.Column="0" 
+                         Grid.Row="5"
+                         IsReadOnly="True"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Left"
+                         Margin="0, 10"
+                         Height="30"
+                         BorderThickness="0"
+                         Text="Номер паспорта"
+                         FontSize="14"
+                         FontWeight="Medium"
+                         FontFamily="Tahoma"/>
+                <TextBox Grid.Column="1" 
+                         Grid.Row="0"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Left"
+                         Margin="10, 10"
+                         Height="30"
+                         BorderBrush="LightGray"
+                         BorderThickness="1"
+                         Width="320"
+                         Text="{Binding Client.LastName}"
+                         FontSize="14"
+                         FontWeight="Medium"
+                         FontFamily="Tahoma"/>
+                <TextBox Grid.Column="1" 
+                         Grid.Row="1"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Left"
+                         Margin="10, 10"
+                         Height="30"
+                         BorderBrush="LightGray"
+                         BorderThickness="1"
+                         Width="320"
+                         Text="{Binding Client.FirstName}"
+                         FontSize="14"
+                         FontWeight="Medium"
+                         FontFamily="Tahoma"/>
+                <TextBox Grid.Column="1" 
+                         Grid.Row="2"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Left"
+                         Margin="10, 10"
+                         Height="30"
+                         BorderBrush="LightGray"
+                         BorderThickness="1"
+                         Width="320"
+                         Text="{Binding Client.MiddleName}"
+                         FontSize="14"
+                         FontWeight="Medium"
+                         FontFamily="Tahoma"/>
+                <TextBox Grid.Column="1" 
+                         Grid.Row="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Left"
+                         Margin="10, 10"
+                         Height="30"
+                         BorderBrush="LightGray"
+                         BorderThickness="1"
+                         Width="320"
+                         Text="{Binding Client.PhoneNumber}"
+                         FontSize="14"
+                         FontWeight="Medium"
+                         FontFamily="Tahoma"/>
+                <TextBox Grid.Column="1" 
+                         Grid.Row="4"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Left"
+                         Margin="10, 10"
+                         Height="30"
+                         BorderBrush="LightGray"
+                         BorderThickness="1"
+                         Width="320"
+                         Text="{Binding Client.PassportSeries}"
+                         FontSize="14"
+                         FontWeight="Medium"
+                         FontFamily="Tahoma"/>
+                <TextBox Grid.Column="1" 
+                         Grid.Row="5"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Left"
+                         Margin="10, 10"
+                         Height="30"
+                         BorderBrush="LightGray"
+                         BorderThickness="1"
+                         Width="320"
+                         Text="{Binding Client.PassportNumber}"
+                         FontSize="14"
+                         FontWeight="Medium"
+                         FontFamily="Tahoma"/>
+            </Grid>
+            <DockPanel>
+                <Button Content="Добавить нового клиента" 
+                        Margin="10, 0"/>
+                <Button Content="Удалить информацию о клиенте"
+                        Margin="10, 0"/>
+                <Button Content="Сохранить изменения"
+                        Margin="10, 0"/>
+            </DockPanel>
+        </StackPanel>
+    </StackPanel>
 </Window>
