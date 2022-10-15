@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,11 @@ namespace BankApp.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainWindowVM mainWindowVM;
         public MainWindow()
         {
             InitializeComponent();
+            mainWindowVM = Resources["viewModel"] as MainWindowVM;
         }
     }
 }
