@@ -25,8 +25,7 @@ namespace BankApp.ViewModel.Commands
 
         public void Execute(object? parameter)
         {
-            NewClientWindow newClientWindow = new NewClientWindow();
-            newClientWindow.ShowDialog();
+            MainWindowVM.OpenNewClientWindow();
         }
     }
 }

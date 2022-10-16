@@ -1,11 +1,13 @@
 ﻿using BankApp.Model;
 using BankApp.ViewModel.Commands;
+using BankApp.ViewModel.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BankApp.ViewModel
 {
@@ -154,6 +156,13 @@ namespace BankApp.ViewModel
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+		public void AddNewClient(Client client)
+		{
+			if (DatabaseHelper.Insert(client))
+			{
+				MessageBox.Show("Информация о клиенте добавлена");
+			}
         }
     }
 }

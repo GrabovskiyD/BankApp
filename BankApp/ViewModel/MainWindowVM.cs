@@ -1,4 +1,5 @@
 ﻿using BankApp.Model;
+using BankApp.View;
 using BankApp.ViewModel.Commands;
 using BankApp.ViewModel.Helpers;
 using System;
@@ -58,5 +59,11 @@ namespace BankApp.ViewModel
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
+		public void OpenNewClientWindow()
+		{
+            NewClientWindow newClientWindow = new NewClientWindow();
+            newClientWindow.ShowDialog();
+			GetClients();
+        }
     }
 }
