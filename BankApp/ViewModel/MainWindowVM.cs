@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BankApp.ViewModel
 {
@@ -38,9 +39,11 @@ namespace BankApp.ViewModel
 
 
 		public OpenNewClientWindowCommand OpenNewClientWindowCommand { get; set; }
+		public DeleteClientCommand DeleteClientCommand { get; set; }
 		public MainWindowVM()
 		{
             OpenNewClientWindowCommand = new OpenNewClientWindowCommand(this);
+			DeleteClientCommand = new DeleteClientCommand(this);
 			Clients = new ObservableCollection<Client>();
 			GetClients();
 		}
@@ -65,5 +68,13 @@ namespace BankApp.ViewModel
             newClientWindow.ShowDialog();
 			GetClients();
         }
+		public void DeleteClient(Client selectedClient)
+		{
+			if (DatabaseHelper.Delete(selectedClient))
+			{
+				MessageBox.Show("Данные о клиенте удалены");
+			}
+			GetClients();
+		}
     }
 }

@@ -223,7 +223,8 @@
                         Margin="10, 0"
                         Command="{Binding OpenNewClientWindowCommand}"/>
                 <Button Content="Удалить информацию о клиенте"
-                        Margin="10, 0"/>
+                        Margin="10, 0"
+                        Command="{Binding DeleteClientCommand}"/>
                 <Button Content="Сохранить изменения"
                         Margin="10, 0"/>
             </DockPanel>
