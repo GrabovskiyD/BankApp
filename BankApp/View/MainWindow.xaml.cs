@@ -24,7 +24,7 @@ namespace BankApp.View
         public MainWindow()
         {
             InitializeComponent();
-            mainWindowVM = Resources["viewModel"] as MainWindowVM;
+            //mainWindowVM = Resources["viewModel"] as MainWindowVM;
         }
     }
 }

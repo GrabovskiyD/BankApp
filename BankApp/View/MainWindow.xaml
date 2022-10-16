@@ -21,7 +21,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackPanel Width="520" Margin="5">
+        <StackPanel Width="520" Margin="5" DataContext="{Binding SelectedClient}">
             <TextBox Text="Персональные данные клиента" 
                      IsReadOnly="True" 
                      HorizontalAlignment="Center" 
@@ -138,7 +138,7 @@
                          BorderBrush="LightGray"
                          BorderThickness="1"
                          Width="320"
-                         Text="{Binding SelectedClient.LastName}"
+                         Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
@@ -153,7 +153,7 @@
                          BorderBrush="LightGray"
                          BorderThickness="1"
                          Width="320"
-                         Text="{Binding SelectedClient.FirstName}"
+                         Text="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
@@ -168,7 +168,7 @@
                          BorderBrush="LightGray"
                          BorderThickness="1"
                          Width="320"
-                         Text="{Binding SelectedClient.MiddleName}"
+                         Text="{Binding MiddleName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
@@ -183,7 +183,7 @@
                          BorderBrush="LightGray"
                          BorderThickness="1"
                          Width="320"
-                         Text="{Binding SelectedClient.PhoneNumber}"
+                         Text="{Binding PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
@@ -198,7 +198,7 @@
                          BorderBrush="LightGray"
                          BorderThickness="1"
                          Width="320"
-                         Text="{Binding SelectedClient.PassportSeries}"
+                         Text="{Binding PassportSeries, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
@@ -213,12 +213,12 @@
                          BorderBrush="LightGray"
                          BorderThickness="1"
                          Width="320"
-                         Text="{Binding SelectedClient.PassportNumber}"
+                         Text="{Binding PassportNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
             </Grid>
-            <DockPanel Height="30">
+            <DockPanel Height="30" DataContext="{StaticResource vm}">
                 <Button Content="Добавить нового клиента"
                         Margin="10, 0"
                         Command="{Binding OpenNewClientWindowCommand}"/>
@@ -226,7 +226,8 @@
                         Margin="10, 0"
                         Command="{Binding DeleteClientCommand}"/>
                 <Button Content="Сохранить изменения"
-                        Margin="10, 0"/>
+                        Margin="10, 0"
+                        Command="{Binding UpdateClientInformationCommand}"/>
             </DockPanel>
         </StackPanel>
     </StackPanel>
