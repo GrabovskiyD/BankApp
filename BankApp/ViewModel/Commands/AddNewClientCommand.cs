@@ -53,9 +53,7 @@ namespace BankApp.ViewModel.Commands
 
         public void Execute(object? parameter)
         {
-            Client client = parameter as Client;
-            MessageBox.Show(DatabaseHelper.Insert(client).ToString());
-
+            NewClientWindowVM.AddNewClient(parameter as Client);
         }
     }
 }
