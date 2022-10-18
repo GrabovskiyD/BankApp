@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankApp.View"
+        xmlns:uc="clr-namespace:BankApp.View.UserControls"
         xmlns:vm="clr-namespace:BankApp.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
@@ -17,7 +18,7 @@
                   SelectedValue="{Binding SelectedClient, Mode=TwoWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding LastName}"/>
+                    <uc:DisplayClient Client="{Binding}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
