@@ -29,7 +29,30 @@ namespace BankApp.ViewModel
 			}
 		}
 
-		private string lastName;
+        private int id;
+
+        public int Id
+        {
+            get { return id; }
+            set 
+            {
+                id = value;
+                SelectedClient = new Client()
+                {
+                    Id = this.Id,
+                    LastName = lastName,
+                    FirstName = this.LastName,
+                    MiddleName = this.MiddleName,
+                    PhoneNumber = this.PhoneNumber,
+                    PassportSeries = this.PassportSeries,
+                    PassportNumber = this.PassportNumber
+                };
+                OnPropertyChanged("Id");
+            }
+        }
+
+
+        private string lastName;
 		public string LastName
 		{
 			get { return lastName; }
@@ -38,7 +61,8 @@ namespace BankApp.ViewModel
 				lastName = value;
 				SelectedClient = new Client()
 				{
-					LastName = lastName,
+                    Id = this.Id,
+                    LastName = lastName,
 					FirstName = this.LastName,
 					MiddleName = this.MiddleName,
 					PhoneNumber = this.PhoneNumber,
@@ -58,6 +82,7 @@ namespace BankApp.ViewModel
 				firstName = value;
                 SelectedClient = new Client()
                 {
+                    Id = this.Id,
                     LastName = this.LastName,
                     FirstName = firstName,
                     MiddleName = this.MiddleName,
@@ -78,6 +103,7 @@ namespace BankApp.ViewModel
                 middleName = value;
                 SelectedClient = new Client()
                 {
+                    Id = this.Id,
                     LastName = this.LastName,
                     FirstName = this.FirstName,
                     MiddleName = middleName,
@@ -98,6 +124,7 @@ namespace BankApp.ViewModel
                 phoneNumber = value;
                 SelectedClient = new Client()
                 {
+                    Id = this.Id,
                     LastName = this.LastName,
                     FirstName = this.FirstName,
                     MiddleName = this.MiddleName,
@@ -118,6 +145,7 @@ namespace BankApp.ViewModel
                 passportSeries = value;
                 SelectedClient = new Client()
                 {
+                    Id = this.Id,
                     LastName = this.LastName,
                     FirstName = this.FirstName,
                     MiddleName = this.MiddleName,
@@ -138,6 +166,7 @@ namespace BankApp.ViewModel
                 passportNumber = value;
                 SelectedClient = new Client()
                 {
+                    Id = this.Id,
                     LastName = this.LastName,
                     FirstName = this.FirstName,
                     MiddleName = this.MiddleName,
