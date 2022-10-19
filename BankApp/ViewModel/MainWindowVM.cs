@@ -28,27 +28,27 @@ namespace BankApp.ViewModel
 			}
 		}
 
-        private int id;
+        //private int id;
 
-        public int Id
-        {
-            get { return id; }
-            set 
-            {
-                id = value;
-                SelectedClient = new Client()
-                {
-                    Id = this.Id,
-                    LastName = lastName,
-                    FirstName = this.LastName,
-                    MiddleName = this.MiddleName,
-                    PhoneNumber = this.PhoneNumber,
-                    PassportSeries = this.PassportSeries,
-                    PassportNumber = this.PassportNumber
-                };
-                OnPropertyChanged("Id");
-            }
-        }
+        //public int Id
+        //{
+        //    get { return id; }
+        //    set 
+        //    {
+        //        id = value;
+        //        SelectedClient = new Client()
+        //        {
+        //            Id = this.Id,
+        //            LastName = lastName,
+        //            FirstName = this.LastName,
+        //            MiddleName = this.MiddleName,
+        //            PhoneNumber = this.PhoneNumber,
+        //            PassportSeries = this.PassportSeries,
+        //            PassportNumber = this.PassportNumber
+        //        };
+        //        OnPropertyChanged("Id");
+        //    }
+        //}
 
 
         private string lastName;
@@ -58,20 +58,11 @@ namespace BankApp.ViewModel
 			set 
 			{ 
 				lastName = value;
-				SelectedClient = new Client()
-				{
-                    Id = this.Id,
-                    LastName = lastName,
-					FirstName = this.LastName,
-					MiddleName = this.MiddleName,
-					PhoneNumber = this.PhoneNumber,
-					PassportSeries = this.PassportSeries,
-					PassportNumber = this.PassportNumber,
-                    ModificationType = "Изменение данных",
-                    ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}",
-                    ChangedInfo = "Изменена фамилия",
-                    ModificatedBy = ""
-				};
+                SelectedClient.LastName = lastName;
+                SelectedClient.ModificationType = "Изменение данных";
+                SelectedClient.ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}";
+                SelectedClient.ChangedInfo = "Изменена фамилия";
+                SelectedClient.ModificatedBy = "";
 				OnPropertyChanged("LastName");
 			}
 		}
@@ -83,20 +74,11 @@ namespace BankApp.ViewModel
 			set 
 			{ 
 				firstName = value;
-                SelectedClient = new Client()
-                {
-                    Id = this.Id,
-                    LastName = this.LastName,
-                    FirstName = firstName,
-                    MiddleName = this.MiddleName,
-                    PhoneNumber = this.PhoneNumber,
-                    PassportSeries = this.PassportSeries,
-                    PassportNumber = this.PassportNumber,
-                    ModificationType = "Изменение данных",
-                    ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}",
-                    ChangedInfo = "Изменено имя",
-                    ModificatedBy = ""
-                };
+                SelectedClient.FirstName = firstName;
+                SelectedClient.ModificationType = "Изменение данных";
+                SelectedClient.ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}";
+                SelectedClient.ChangedInfo = "Изменено имя";
+                SelectedClient.ModificatedBy = "";
                 OnPropertyChanged("FirstName");
             }
 		}
@@ -108,20 +90,11 @@ namespace BankApp.ViewModel
             set
             {
                 middleName = value;
-                SelectedClient = new Client()
-                {
-                    Id = this.Id,
-                    LastName = this.LastName,
-                    FirstName = this.FirstName,
-                    MiddleName = middleName,
-                    PhoneNumber = this.PhoneNumber,
-                    PassportSeries = this.PassportSeries,
-                    PassportNumber = this.PassportNumber,
-                    ModificationType = "Изменение данных",
-                    ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}",
-                    ChangedInfo = "Изменено отчество",
-                    ModificatedBy = ""
-                };
+                SelectedClient.MiddleName = middleName;
+                SelectedClient.ModificationType = "Изменение данных";
+                SelectedClient.ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}";
+                SelectedClient.ChangedInfo = "Изменено отчество";
+                SelectedClient.ModificatedBy = "";
                 OnPropertyChanged("MiddleName");
             }
         }
@@ -133,20 +106,11 @@ namespace BankApp.ViewModel
             set
             {
                 phoneNumber = value;
-                SelectedClient = new Client()
-                {
-                    Id = this.Id,
-                    LastName = this.LastName,
-                    FirstName = this.FirstName,
-                    MiddleName = this.MiddleName,
-                    PhoneNumber = phoneNumber,
-                    PassportSeries = this.PassportSeries,
-                    PassportNumber = this.PassportNumber,
-                    ModificationType = "Изменение данных",
-                    ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}",
-                    ChangedInfo = "Изменён номер телефона",
-                    ModificatedBy = ""
-                };
+                SelectedClient.PhoneNumber = phoneNumber;
+                SelectedClient.ModificationType = "Изменение данных";
+                SelectedClient.ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}";
+                SelectedClient.ChangedInfo = "Изменён номер телефона";
+                SelectedClient.ModificatedBy = "";
                 OnPropertyChanged("PhoneNumber");
             }
         }
@@ -158,20 +122,11 @@ namespace BankApp.ViewModel
             set
             {
                 passportSeries = value;
-                SelectedClient = new Client()
-                {
-                    Id = this.Id,
-                    LastName = this.LastName,
-                    FirstName = this.FirstName,
-                    MiddleName = this.MiddleName,
-                    PhoneNumber = this.PhoneNumber,
-                    PassportSeries = passportSeries,
-                    PassportNumber = this.PassportNumber,
-                    ModificationType = "Изменение данных",
-                    ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}",
-                    ChangedInfo = "Изменена серия паспорта",
-                    ModificatedBy = ""
-                };
+                SelectedClient.PassportSeries = passportSeries;
+                SelectedClient.ModificationType = "Изменение данных";
+                SelectedClient.ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}";
+                SelectedClient.ChangedInfo = "Изменена серия паспорта";
+                SelectedClient.ModificatedBy = "";
                 OnPropertyChanged("PassportSeries");
             }
         }
@@ -183,20 +138,11 @@ namespace BankApp.ViewModel
             set
             {
                 passportNumber = value;
-                SelectedClient = new Client()
-                {
-                    Id = this.Id,
-                    LastName = this.LastName,
-                    FirstName = this.FirstName,
-                    MiddleName = this.MiddleName,
-                    PhoneNumber = this.PhoneNumber,
-                    PassportSeries = this.PassportSeries,
-                    PassportNumber = passportNumber,
-                    ModificationType = "Изменение данных",
-                    ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}",
-                    ChangedInfo = "Изменён номер паспорта",
-                    ModificatedBy = ""
-                };
+                SelectedClient.PassportNumber = passportNumber;
+                SelectedClient.ModificationType = "Изменение данных";
+                SelectedClient.ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}";
+                SelectedClient.ChangedInfo = "Изменён номер паспорта";
+                SelectedClient.ModificatedBy = "";
                 OnPropertyChanged("PassportNumber");
             }
         }

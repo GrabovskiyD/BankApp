@@ -39,8 +39,12 @@ namespace BankApp.ViewModel
 					MiddleName = this.MiddleName,
 					PhoneNumber = this.PhoneNumber,
 					PassportSeries = this.PassportSeries,
-					PassportNumber = this.PassportNumber
-				};
+					PassportNumber = this.PassportNumber,
+					ModificationType = "Запись создана",
+					ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}",
+					ChangedInfo = "",
+					ModificatedBy = ""
+            };
 				OnPropertyChanged("LastName");
 			}
 		}
@@ -59,7 +63,11 @@ namespace BankApp.ViewModel
                     MiddleName = this.MiddleName,
                     PhoneNumber = this.PhoneNumber,
                     PassportSeries = this.PassportSeries,
-                    PassportNumber = this.PassportNumber
+                    PassportNumber = this.PassportNumber,
+                    ModificationType = "Запись создана",
+                    ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}",
+                    ChangedInfo = "",
+                    ModificatedBy = ""
                 };
                 OnPropertyChanged("FirstName");
             }
@@ -79,7 +87,11 @@ namespace BankApp.ViewModel
                     MiddleName = middleName,
                     PhoneNumber = this.PhoneNumber,
                     PassportSeries = this.PassportSeries,
-                    PassportNumber = this.PassportNumber
+                    PassportNumber = this.PassportNumber,
+                    ModificationType = "Запись создана",
+                    ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}",
+                    ChangedInfo = "",
+                    ModificatedBy = ""
                 };
                 OnPropertyChanged("MiddleName");
             }
@@ -99,7 +111,11 @@ namespace BankApp.ViewModel
                     MiddleName = this.MiddleName,
                     PhoneNumber = phoneNumber,
                     PassportSeries = this.PassportSeries,
-                    PassportNumber = this.PassportNumber
+                    PassportNumber = this.PassportNumber,
+                    ModificationType = "Запись создана",
+                    ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}",
+                    ChangedInfo = "",
+                    ModificatedBy = ""
                 };
                 OnPropertyChanged("PhoneNumber");
             }
@@ -119,7 +135,11 @@ namespace BankApp.ViewModel
                     MiddleName = this.MiddleName,
                     PhoneNumber = this.PhoneNumber,
                     PassportSeries = passportSeries,
-                    PassportNumber = this.PassportNumber
+                    PassportNumber = this.PassportNumber,
+                    ModificationType = "Запись создана",
+                    ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}",
+                    ChangedInfo = "",
+                    ModificatedBy = ""
                 };
                 OnPropertyChanged("PassportSeries");
             }
@@ -139,7 +159,11 @@ namespace BankApp.ViewModel
                     MiddleName = this.MiddleName,
                     PhoneNumber = this.PhoneNumber,
                     PassportSeries = this.PassportSeries,
-                    PassportNumber = passportNumber
+                    PassportNumber = passportNumber,
+                    ModificationType = "Запись создана",
+                    ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}",
+                    ChangedInfo = "",
+                    ModificatedBy = ""
                 };
                 OnPropertyChanged("PassportNumber");
             }

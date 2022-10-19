@@ -21,9 +21,9 @@ namespace BankApp.Model
         public string PhoneNumber { get; set; }
         public string PassportSeries { get; set; }
         public string PassportNumber { get; set; }
-        public string ModificationType { get; init; } = "Запись создана";
-        public string ModificationTime { get; init; } = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}";
-        public string ChangedInfo { get; init; } = "";
-        public string ModificatedBy { get; init; } = "";
+        public string ModificationType { get; set; }
+        public string ModificationTime { get; set; }
+        public string ChangedInfo { get; set; }
+        public string ModificatedBy { get; set; }
     }
 }
