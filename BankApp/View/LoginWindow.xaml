@@ -4,27 +4,35 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankApp.View"
+        xmlns:vm="clr-namespace:BankApp.ViewModel"
         mc:Ignorable="d"
         Title="LoginWindow" Height="150" Width="200"
         WindowStyle="None"
-        ResizeMode="NoResize">
-    <StackPanel>
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner">
+    <Window.Resources>
+        <vm:LoginWindowVM x:Key="vm"/>
+    </Window.Resources>
+    <StackPanel DataContext="{StaticResource vm}">
         <TextBox Text="Имя пользователя" 
                  IsReadOnly="True"
                  Margin="0, 5"
                  Height="20"
                  BorderThickness="0"/>
         <TextBox Margin="0, 5"
-                 Height="20"/>
+                 Height="20"
+                 Text="{Binding Username, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox Text="Пароль" 
                  IsReadOnly="True"
                  Margin="0, 5"
                  Height="20"
                  BorderThickness="0"/>
         <TextBox Margin="0, 5"
-                 Height="20"/>
+                 Height="20"
+                 Text="{Binding Password, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
         <Button Content="Войти"
                 Margin="0, 5"
-                Height="20"/>
+                Height="20"
+                Command="{Binding LoginCommand}"/>
     </StackPanel>
 </Window>

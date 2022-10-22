@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankApp.Model.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,6 @@ namespace BankApp
     /// </summary>
     public partial class App : Application
     {
+        public static IEmployee Employee { get; set; } 
     }
 }

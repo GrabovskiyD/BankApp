@@ -1,28 +1,68 @@
-﻿using System;
+﻿using BankApp.Model;
+using BankApp.View;
+using BankApp.ViewModel.Commands;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BankApp.ViewModel
 {
-    public class LoginWindowVM
+    public class LoginWindowVM : INotifyPropertyChanged
     {
-		private string userName;
+		private string username;
 
-		public string UserName
+		public string Username
 		{
-			get { return userName; }
-			set { userName = value; }
+			get { return username; }
+			set
+			{ 
+				username = value;
+				OnPropertyChanged("Username");
+			}
 		}
 		private string password;
 
 		public string Password
 		{
 			get { return password; }
-			set { password = value; }
+			set 
+			{ 
+				password = value;
+				OnPropertyChanged("Password");
+			}
+		}
+		public LoginCommand LoginCommand { get; set; }
+
+		public event PropertyChangedEventHandler? PropertyChanged;
+		private void OnPropertyChanged(string propertyName)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 
+		public LoginWindowVM()
+		{
+			LoginCommand = new LoginCommand(this);
+		}
 
+		public bool Login()
+		{
+			if(Username.ToLower().Equals("consultant") && Password.Equals("simple_password"))
+			{
+				App.Employee = new Consultant();
+				return true;
+			}
+			else if(Username.ToLower().Equals("manager") && Password.Equals("complex_password"))
+			{
+				App.Employee = new Manager();
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
 	}
 }

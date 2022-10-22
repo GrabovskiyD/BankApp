@@ -19,8 +19,19 @@ namespace BankApp.ViewModel
     public class MainWindowVM : INotifyPropertyChanged
     {
         public ObservableCollection<Client> Clients { get; set; }
+        public LoginWindowVM LoginWindowVM { get; set; }
+		private IEmployee employee;
+        public IEmployee Employee
+        {
+            get { return employee; }
+            set
+            {
+                employee = value;
+                OnPropertyChanged("Employee");
+            }
+        }
 
-		private Client selectedClient;
+        private Client selectedClient;
 		public Client SelectedClient
 		{
 			get { return selectedClient; }
@@ -112,17 +123,6 @@ namespace BankApp.ViewModel
 			{ 
 				modificationType = value;
 				OnPropertyChanged("ModificationType");
-			}
-		}
-		private IEmployee employee;
-
-		public IEmployee Employee
-		{
-			get { return employee; }
-			set 
-			{ 
-				employee = value;
-				OnPropertyChanged("Employee");
 			}
 		}
 		public OpenNewClientWindowCommand OpenNewClientWindowCommand { get; set; }
