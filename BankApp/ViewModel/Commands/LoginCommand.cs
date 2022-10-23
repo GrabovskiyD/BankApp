@@ -27,7 +27,6 @@ namespace BankApp.ViewModel.Commands
             if (LoginWindowVM.Login())
             {
                 MessageBox.Show("Авторизация успешна");
-                LoginWindowVM.DialogResult = true;
             }
             else
             {

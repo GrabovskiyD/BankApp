@@ -18,19 +18,9 @@ namespace BankApp.ViewModel
 {
     public class MainWindowVM : INotifyPropertyChanged
     {
+		private IBank bank;
         public ObservableCollection<Client> Clients { get; set; }
         public LoginWindowVM LoginWindowVM { get; set; }
-		private IEmployee employee;
-        public IEmployee Employee
-        {
-            get { return employee; }
-            set
-            {
-                employee = value;
-                OnPropertyChanged("Employee");
-            }
-        }
-
         private Client selectedClient;
 		public Client SelectedClient
 		{
@@ -134,16 +124,8 @@ namespace BankApp.ViewModel
 			DeleteClientCommand = new DeleteClientCommand(this);
 			UpdateClientInformationCommand = new UpdateClientInformationCommand(this);
 			Clients = new ObservableCollection<Client>();
-			GetClients();
-		}
-
-		private void GetClients()
-		{
-			Clients.Clear();
-			foreach(Client client in DatabaseHelper.Read<Client>())
-			{
-				Clients.Add(client);
-			}
+			bank = new BankProxy(this, new Bank());
+			bank.GetClients(Clients);
 		}
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -155,23 +137,23 @@ namespace BankApp.ViewModel
 		{
             NewClientWindow newClientWindow = new NewClientWindow();
             newClientWindow.ShowDialog();
-			GetClients();
+			bank.GetClients(Clients);
         }
 		public void DeleteClient(Client selectedClient)
 		{
-			if (DatabaseHelper.Delete(selectedClient))
+			if (bank.RemoveClient(selectedClient))
 			{
 				MessageBox.Show("Данные о клиенте удалены");
 			}
-			GetClients();
+			bank.GetClients(Clients);
 		}
 		public void UpdateClientInformation(Client selectedClient)
 		{
-			if (DatabaseHelper.Update(selectedClient))
+			if (bank.UpdateClient(selectedClient))
 			{
 				MessageBox.Show("Информация обновлена");
 			}
-			GetClients();
+			bank.GetClients(Clients);
 		}
     }
 }

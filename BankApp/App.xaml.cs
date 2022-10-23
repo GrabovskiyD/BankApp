@@ -1,6 +1,8 @@
-﻿using BankApp.Model.Interfaces;
+﻿using BankApp.Model;
+using BankApp.Model.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Linq;
@@ -14,6 +16,6 @@ namespace BankApp
     /// </summary>
     public partial class App : Application
     {
-        public static IEmployee Employee { get; set; } 
+        public static IEmployee Employee { get; set; } = new Consultant();
     }
 }
