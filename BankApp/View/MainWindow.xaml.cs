@@ -20,10 +20,8 @@ namespace BankApp.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindowVM MainWindowVM;
         public MainWindow()
         {
-            MainWindowVM = Resources["vm"] as MainWindowVM;
             InitializeComponent();
         }
         protected override void OnActivated(EventArgs e)
