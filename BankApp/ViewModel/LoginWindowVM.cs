@@ -78,11 +78,12 @@ namespace BankApp.ViewModel
 				OnPropertyChanged("DialogResult");
 			}
 		}
-        public static readonly DependencyProperty DialogResultProperty = DependencyProperty.RegisterAttached(
-			"DialogResult",
-			typeof(bool?),
-			typeof(LoginWindowVM),
-			new PropertyMetadata(DialogResultChanged));
+        public static readonly DependencyProperty DialogResultProperty =
+    DependencyProperty.RegisterAttached(
+        "DialogResult",
+        typeof(bool?),
+        typeof(LoginWindowVM),
+        new PropertyMetadata(DialogResultChanged));
 
         private static void DialogResultChanged(
             DependencyObject d,
@@ -96,6 +97,5 @@ namespace BankApp.ViewModel
         {
             target.SetValue(DialogResultProperty, value);
         }
-
     }
 }

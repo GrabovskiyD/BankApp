@@ -21,10 +21,8 @@ namespace BankApp.View
     public partial class LoginWindow : Window
     {
         public MainWindow MainWindow { get; set; }
-        public LoginWindowVM LoginWindowVM;
         public LoginWindow()
         {
-            LoginWindowVM = Resources["vm"] as LoginWindowVM;
             InitializeComponent();
         }
     }

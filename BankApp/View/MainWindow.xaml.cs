@@ -34,7 +34,9 @@ namespace BankApp.View
                 MainWindow = this
             };
             LoginWindow.Owner = this;
+            this.Visibility = Visibility.Collapsed;
             LoginWindow.ShowDialog();
+            this.Visibility = Visibility.Visible;
         }
     }
 }
