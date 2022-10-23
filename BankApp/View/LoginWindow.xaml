@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         Title="LoginWindow" Height="150" Width="240"
         WindowStyle="None"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner">
     <Window.Resources>
         <vm:LoginWindowVM x:Key="vm"/>
     </Window.Resources>
@@ -28,7 +29,7 @@
                  BorderThickness="0"/>
         <TextBox Margin="5, 5"
                  Height="20"
-                 Text="{Binding HiddenPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                 Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Button Content="Войти"
                 Margin="5, 5"
                 Height="20"

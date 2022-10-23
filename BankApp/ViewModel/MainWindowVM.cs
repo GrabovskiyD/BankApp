@@ -19,7 +19,8 @@ namespace BankApp.ViewModel
     public class MainWindowVM : INotifyPropertyChanged
     {
 		private IBank bank;
-        public ObservableCollection<Client> Clients { get; set; }
+
+		public ObservableCollection<Client> Clients { get; set; }
         public LoginWindowVM LoginWindowVM { get; set; }
         private Client selectedClient;
 		public Client SelectedClient
@@ -153,6 +154,11 @@ namespace BankApp.ViewModel
 			{
 				MessageBox.Show("Информация обновлена");
 			}
+			bank.GetClients(Clients);
+		}
+
+		public void GetClients()
+		{
 			bank.GetClients(Clients);
 		}
     }

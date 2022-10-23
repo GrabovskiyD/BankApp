@@ -7,7 +7,9 @@
         xmlns:uc="clr-namespace:BankApp.View.UserControls"
         xmlns:vm="clr-namespace:BankApp.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="500" Width="900" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <vm:MainWindowVM x:Key="vm"/>
     </Window.Resources>
