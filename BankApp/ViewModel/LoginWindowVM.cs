@@ -43,6 +43,8 @@ namespace BankApp.ViewModel
 			get { return hiddenPassword; }
 			set 
 			{ 
+				Password = value;
+				OnPropertyChanged("Password");
 				hiddenPassword += "*";
 				OnPropertyChanged("HiddenPassword");
 			}
@@ -51,6 +53,7 @@ namespace BankApp.ViewModel
 		public LoginCommand LoginCommand { get; set; }
 
 		public event PropertyChangedEventHandler? PropertyChanged;
+		public event EventHandler Authenticated;
 		private void OnPropertyChanged(string propertyName)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -61,21 +64,17 @@ namespace BankApp.ViewModel
 			LoginCommand = new LoginCommand(this);
 		}
 
-		public bool Login()
+		public void Login()
 		{
-			if(Username.ToLower().Equals("consultant") && Password.Equals("simple_password"))
+			if(Username.ToLower().Equals("consultant") && Password.Equals("qwerty"))
 			{
 				App.Employee = new Consultant();
-				return true;
+				Authenticated.Invoke(this, new EventArgs());
 			}
 			else if(Username.ToLower().Equals("manager") && Password.Equals("complex_password"))
 			{
 				App.Employee = new Manager();
-				return true;
-			}
-			else
-			{
-				return false;
+                Authenticated.Invoke(this, new EventArgs());
 			}
 		}
     }

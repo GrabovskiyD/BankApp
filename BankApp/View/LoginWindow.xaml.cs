@@ -21,9 +21,16 @@ namespace BankApp.View
     public partial class LoginWindow : Window
     {
         public MainWindow MainWindow { get; set; }
+        LoginWindowVM loginWindowVM;
         public LoginWindow()
         {
             InitializeComponent();
+            loginWindowVM = Resources["vm"] as LoginWindowVM;
+            loginWindowVM.Authenticated += this.Authenticated;
+        }
+        private void Authenticated(object? sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

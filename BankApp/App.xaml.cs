@@ -16,6 +16,6 @@ namespace BankApp
     /// </summary>
     public partial class App : Application
     {
-        public static IEmployee Employee { get; set; } = new Consultant();
+        public static IEmployee Employee { get; set; }
     }
 }

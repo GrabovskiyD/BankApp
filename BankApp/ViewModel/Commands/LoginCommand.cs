@@ -24,14 +24,7 @@ namespace BankApp.ViewModel.Commands
 
         public void Execute(object? parameter)
         {
-            if (LoginWindowVM.Login())
-            {
-                MessageBox.Show("Авторизация успешна");
-            }
-            else
-            {
-                MessageBox.Show("Авторизация не пройдена");
-            }
+            LoginWindowVM.Login();
         }
     }
 }
