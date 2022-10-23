@@ -20,11 +20,21 @@ namespace BankApp.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        MainWindowVM mainWindowVM;
         public MainWindow()
         {
             InitializeComponent();
-            //mainWindowVM = Resources["viewModel"] as MainWindowVM;
+        }
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
+            LoginWindow LoginWindow = new LoginWindow()
+            {
+                MainWindow = this
+            };
+            LoginWindow.Owner = this;
+            this.Visibility = Visibility.Collapsed;
+            LoginWindow.ShowDialog();
+            this.Visibility = Visibility.Visible;
         }
     }
 }

@@ -128,7 +128,8 @@
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
-                <TextBox Grid.Column="1" 
+                <TextBox x:Name="lastNameTextBox"  
+                         Grid.Column="1" 
                          Grid.Row="0"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Center"

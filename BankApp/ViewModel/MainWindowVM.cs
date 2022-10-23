@@ -1,4 +1,5 @@
 ﻿using BankApp.Model;
+using BankApp.Model.Interfaces;
 using BankApp.View;
 using BankApp.ViewModel.Commands;
 using BankApp.ViewModel.Helpers;
@@ -10,14 +11,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace BankApp.ViewModel
 {
     public class MainWindowVM : INotifyPropertyChanged
     {
+		private IBank bank;
         public ObservableCollection<Client> Clients { get; set; }
-        
-		private Client selectedClient;
+        public LoginWindowVM LoginWindowVM { get; set; }
+        private Client selectedClient;
 		public Client SelectedClient
 		{
 			get { return selectedClient; }
@@ -28,29 +32,6 @@ namespace BankApp.ViewModel
 			}
 		}
 
-        //private int id;
-
-        //public int Id
-        //{
-        //    get { return id; }
-        //    set 
-        //    {
-        //        id = value;
-        //        SelectedClient = new Client()
-        //        {
-        //            Id = this.Id,
-        //            LastName = lastName,
-        //            FirstName = this.LastName,
-        //            MiddleName = this.MiddleName,
-        //            PhoneNumber = this.PhoneNumber,
-        //            PassportSeries = this.PassportSeries,
-        //            PassportNumber = this.PassportNumber
-        //        };
-        //        OnPropertyChanged("Id");
-        //    }
-        //}
-
-
         private string lastName;
 		public string LastName
 		{
@@ -59,10 +40,6 @@ namespace BankApp.ViewModel
 			{ 
 				lastName = value;
                 SelectedClient.LastName = lastName;
-                SelectedClient.ModificationType = "Изменение данных";
-                SelectedClient.ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}";
-                SelectedClient.ChangedInfo = "Изменена фамилия";
-                SelectedClient.ModificatedBy = "";
 				OnPropertyChanged("LastName");
 			}
 		}
@@ -75,10 +52,6 @@ namespace BankApp.ViewModel
 			{ 
 				firstName = value;
                 SelectedClient.FirstName = firstName;
-                SelectedClient.ModificationType = "Изменение данных";
-                SelectedClient.ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}";
-                SelectedClient.ChangedInfo = "Изменено имя";
-                SelectedClient.ModificatedBy = "";
                 OnPropertyChanged("FirstName");
             }
 		}
@@ -91,10 +64,6 @@ namespace BankApp.ViewModel
             {
                 middleName = value;
                 SelectedClient.MiddleName = middleName;
-                SelectedClient.ModificationType = "Изменение данных";
-                SelectedClient.ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}";
-                SelectedClient.ChangedInfo = "Изменено отчество";
-                SelectedClient.ModificatedBy = "";
                 OnPropertyChanged("MiddleName");
             }
         }
@@ -107,10 +76,6 @@ namespace BankApp.ViewModel
             {
                 phoneNumber = value;
                 SelectedClient.PhoneNumber = phoneNumber;
-                SelectedClient.ModificationType = "Изменение данных";
-                SelectedClient.ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}";
-                SelectedClient.ChangedInfo = "Изменён номер телефона";
-                SelectedClient.ModificatedBy = "";
                 OnPropertyChanged("PhoneNumber");
             }
         }
@@ -123,10 +88,6 @@ namespace BankApp.ViewModel
             {
                 passportSeries = value;
                 SelectedClient.PassportSeries = passportSeries;
-                SelectedClient.ModificationType = "Изменение данных";
-                SelectedClient.ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}";
-                SelectedClient.ChangedInfo = "Изменена серия паспорта";
-                SelectedClient.ModificatedBy = "";
                 OnPropertyChanged("PassportSeries");
             }
         }
@@ -139,15 +100,22 @@ namespace BankApp.ViewModel
             {
                 passportNumber = value;
                 SelectedClient.PassportNumber = passportNumber;
-                SelectedClient.ModificationType = "Изменение данных";
-                SelectedClient.ModificationTime = $"{DateTime.Now:dd.MM.yyyy HH:mm:ss}";
-                SelectedClient.ChangedInfo = "Изменён номер паспорта";
-                SelectedClient.ModificatedBy = "";
                 OnPropertyChanged("PassportNumber");
             }
         }
 
-        public OpenNewClientWindowCommand OpenNewClientWindowCommand { get; set; }
+		private string modificationType;
+
+		public string ModificationType
+		{
+			get { return modificationType; }
+			set 
+			{ 
+				modificationType = value;
+				OnPropertyChanged("ModificationType");
+			}
+		}
+		public OpenNewClientWindowCommand OpenNewClientWindowCommand { get; set; }
 		public DeleteClientCommand DeleteClientCommand { get; set; }
 		public UpdateClientInformationCommand UpdateClientInformationCommand { get; set; }
 		public MainWindowVM()
@@ -156,16 +124,8 @@ namespace BankApp.ViewModel
 			DeleteClientCommand = new DeleteClientCommand(this);
 			UpdateClientInformationCommand = new UpdateClientInformationCommand(this);
 			Clients = new ObservableCollection<Client>();
-			GetClients();
-		}
-
-		private void GetClients()
-		{
-			Clients.Clear();
-			foreach(Client client in DatabaseHelper.Read<Client>())
-			{
-				Clients.Add(client);
-			}
+			bank = new BankProxy(this, new Bank());
+			bank.GetClients(Clients);
 		}
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -177,23 +137,23 @@ namespace BankApp.ViewModel
 		{
             NewClientWindow newClientWindow = new NewClientWindow();
             newClientWindow.ShowDialog();
-			GetClients();
+			bank.GetClients(Clients);
         }
 		public void DeleteClient(Client selectedClient)
 		{
-			if (DatabaseHelper.Delete(selectedClient))
+			if (bank.RemoveClient(selectedClient))
 			{
 				MessageBox.Show("Данные о клиенте удалены");
 			}
-			GetClients();
+			bank.GetClients(Clients);
 		}
 		public void UpdateClientInformation(Client selectedClient)
 		{
-			if (DatabaseHelper.Update(selectedClient))
+			if (bank.UpdateClient(selectedClient))
 			{
 				MessageBox.Show("Информация обновлена");
 			}
-			GetClients();
+			bank.GetClients(Clients);
 		}
     }
 }
