@@ -13,8 +13,12 @@ namespace BankApp.ViewModel
 {
     public class NewClientWindowVM : INotifyPropertyChanged
     {
-		private Client client;
-
+        #region Поля и свойства нового клиента
+        private Client client;
+        /// <summary>
+        /// Новый клиент /
+        /// A new client
+        /// </summary>
 		public Client Client
 		{
 			get { return client; }
@@ -25,7 +29,10 @@ namespace BankApp.ViewModel
 			}
 		}
 		private string lastName;
-
+        /// <summary>
+        /// Фамилия клиента /
+        /// Client lastname
+        /// </summary>
 		public string LastName
 		{
 			get { return lastName; }
@@ -49,7 +56,10 @@ namespace BankApp.ViewModel
 			}
 		}
 		private string firstName;
-
+        /// <summary>
+        /// Имя клиента /
+        /// Client firstname
+        /// </summary>
 		public string FirstName
 		{
 			get { return firstName; }
@@ -73,7 +83,10 @@ namespace BankApp.ViewModel
             }
 		}
 		private string middleName;
-
+        /// <summary>
+        /// Отчество клиента /
+        /// Client middlename
+        /// </summary>
 		public string MiddleName
 		{
 			get { return middleName; }
@@ -97,7 +110,10 @@ namespace BankApp.ViewModel
             }
 		}
 		private string phoneNumber;
-
+        /// <summary>
+        /// Номер мобильного телефона клиента /
+        /// Client mobile phone number
+        /// </summary>
 		public string PhoneNumber
 		{
 			get { return phoneNumber; }
@@ -121,7 +137,10 @@ namespace BankApp.ViewModel
             }
 		}
 		private string passportSeries;
-
+        /// <summary>
+        /// Серия паспорта клиента /
+        /// Client passport series
+        /// </summary>
 		public string PassportSeries
 		{
 			get { return passportSeries; }
@@ -145,7 +164,10 @@ namespace BankApp.ViewModel
             }
 		}
 		private string passportNumber;
-
+        /// <summary>
+        /// Номер паспорта клиента /
+        /// Client passport number
+        /// </summary>
 		public string PassportNumber
 		{
 			get { return passportNumber; }
@@ -168,9 +190,12 @@ namespace BankApp.ViewModel
                 OnPropertyChanged("PassportNumber");
             }
 		}
-
-		public AddNewClientCommand AddNewClientCommand { get; set; }
-
+        #endregion
+        /// <summary>
+        /// Команда добавления нового клиента /
+        /// Command to adding a new client
+        /// </summary>
+        public AddNewClientCommand AddNewClientCommand { get; set; }
 		public NewClientWindowVM()
 		{
 			AddNewClientCommand = new AddNewClientCommand(this);
@@ -181,6 +206,11 @@ namespace BankApp.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        /// <summary>
+        /// Добавления нового клиента в хранилище /
+        /// Adding a new client to the storage
+        /// </summary>
+        /// <param name="client"></param>
 		public void AddNewClient(Client client)
 		{
 			if (DatabaseHelper.Insert(client))

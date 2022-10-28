@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace BankApp.Model.Interfaces
 {
+    /// <summary>
+    /// Сотрудник банка /
+    /// Bank employee
+    /// </summary>
     public interface IEmployee
     {
     }
