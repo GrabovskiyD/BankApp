@@ -42,5 +42,6 @@ namespace BankApp.View
                 Visibility = Visibility.Visible;
             }
         }
+        //TODO: Добавить проверку того, кто сейчас работает в программе    
     }
 }

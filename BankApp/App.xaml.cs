@@ -16,6 +16,10 @@ namespace BankApp
     /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// Роль сотрудника банка /
+        /// Bank employee role
+        /// </summary>
         public static IEmployee Employee { get; set; }
     }
 }

@@ -15,8 +15,11 @@ namespace BankApp.ViewModel
     public class LoginWindowVM : INotifyPropertyChanged
     {
 		private string username;
-
-		public string Username
+        /// <summary>
+        /// Роль сотрудника банка /
+        /// Bank employee role
+        /// </summary>
+        public string Username
 		{
 			get { return username; }
 			set
@@ -25,9 +28,13 @@ namespace BankApp.ViewModel
 				OnPropertyChanged("Username");
 			}
 		}
-		private string password;
 
-		public string Password
+        private string password;
+        /// <summary>
+        /// Пароль, соответствующий роли сотрудника банка /
+        /// Password corresponding to the role of the bank employee
+        /// </summary>
+        public string Password
 		{
 			get { return password; }
 			set 
@@ -36,35 +43,28 @@ namespace BankApp.ViewModel
 				OnPropertyChanged("Password");
 			}
 		}
-		private string hiddenPassword = "";
+        /// <summary>
+        /// Команда, осуществляющая авторизацию пользователя приложения /
+        /// The command that authorizes the application user
+        /// </summary>
+        public LoginCommand LoginCommand { get; set; }
 
-		public string HiddenPassword
-		{
-			get { return hiddenPassword; }
-			set 
-			{ 
-				Password = value;
-				OnPropertyChanged("Password");
-				hiddenPassword += "*";
-				OnPropertyChanged("HiddenPassword");
-			}
-		}
-
-		public LoginCommand LoginCommand { get; set; }
-
-		public event PropertyChangedEventHandler? PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
+		
 		public event EventHandler Authenticated;
-		private void OnPropertyChanged(string propertyName)
+        private void OnPropertyChanged(string propertyName)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
-
 		public LoginWindowVM()
 		{
 			LoginCommand = new LoginCommand(this);
 		}
-
-		public void Login()
+        /// <summary>
+        /// Авторизация пользовтеля приложения /
+        /// Application user authorization
+        /// </summary>
+        public void Login()
 		{
 			if(Username.ToLower().Equals("consultant") && Password.Equals("qwerty"))
 			{
@@ -77,5 +77,7 @@ namespace BankApp.ViewModel
                 Authenticated.Invoke(this, new EventArgs());
 			}
 		}
+		//TODO: Реализовать кастомный passwordbox с возможностью привязки данных
+		//TODO: Хранить пароли не в коде
     }
 }

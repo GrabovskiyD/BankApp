@@ -22,8 +22,13 @@ namespace BankApp.ViewModel
 
 		public ObservableCollection<Client> Clients { get; set; }
         public LoginWindowVM LoginWindowVM { get; set; }
+        #region Поля и свойства клиента
         private Client selectedClient;
-		public Client SelectedClient
+        /// <summary>
+        /// Клиент, выбранный в главном окне приложения /
+        /// Client selected in the main application window
+        /// </summary>
+        public Client SelectedClient
 		{
 			get { return selectedClient; }
 			set 
@@ -34,7 +39,11 @@ namespace BankApp.ViewModel
 		}
 
         private string lastName;
-		public string LastName
+        /// <summary>
+        /// Фамилия клиента /
+        /// Client lastname
+        /// </summary>
+        public string LastName
 		{
 			get { return lastName; }
 			set 
@@ -44,9 +53,13 @@ namespace BankApp.ViewModel
 				OnPropertyChanged("LastName");
 			}
 		}
-
-		private string firstName;
-		public string FirstName
+        
+        private string firstName;
+        /// <summary>
+        /// Имя клиента /
+        /// Client firstname
+        /// </summary>
+        public string FirstName
 		{
 			get { return firstName; }
 			set 
@@ -58,6 +71,10 @@ namespace BankApp.ViewModel
 		}
 
 		private string middleName;
+        /// <summary>
+        /// Отчество клиента /
+        /// Client middlename
+        /// </summary>
         public string MiddleName
         {
             get { return middleName; }
@@ -70,6 +87,10 @@ namespace BankApp.ViewModel
         }
 
         private string phoneNumber;
+        /// <summary>
+        /// Номер мобильного телефона клиента /
+        /// Client mobile phone number
+        /// </summary>
         public string PhoneNumber
         {
             get { return phoneNumber; }
@@ -82,6 +103,10 @@ namespace BankApp.ViewModel
         }
 
         private string passportSeries;
+        /// <summary>
+        /// Серия паспорта клиента /
+        /// Client passport series
+        /// </summary>
         public string PassportSeries
         {
             get { return passportSeries; }
@@ -94,6 +119,10 @@ namespace BankApp.ViewModel
         }
 
         private string passportNumber;
+        /// <summary>
+        /// Номер паспорта клиента /
+        /// Client passport number
+        /// </summary>
         public string PassportNumber
         {
             get { return passportNumber; }
@@ -104,20 +133,21 @@ namespace BankApp.ViewModel
                 OnPropertyChanged("PassportNumber");
             }
         }
-
-		private string modificationType;
-
-		public string ModificationType
-		{
-			get { return modificationType; }
-			set 
-			{ 
-				modificationType = value;
-				OnPropertyChanged("ModificationType");
-			}
-		}
-		public OpenNewClientWindowCommand OpenNewClientWindowCommand { get; set; }
+        /// <summary>
+        /// Команда для открытия окна добавления нового клиента /
+        /// Command to open the window for adding a new client
+        /// </summary>
+		#endregion
+        public OpenNewClientWindowCommand OpenNewClientWindowCommand { get; set; }
+        /// <summary>
+        /// Команда для удаления информации о клиенте /
+        /// Command for deleting client information
+        /// </summary>
 		public DeleteClientCommand DeleteClientCommand { get; set; }
+        /// <summary>
+        /// Команда для обновления информации о клиенте /
+        /// Command for updating client information
+        /// </summary>
 		public UpdateClientInformationCommand UpdateClientInformationCommand { get; set; }
 		public MainWindowVM()
 		{
@@ -128,18 +158,27 @@ namespace BankApp.ViewModel
 			bank = new BankProxy(this, new Bank());
 			bank.GetClients(Clients);
 		}
-
+        
         public event PropertyChangedEventHandler? PropertyChanged;
 		private void OnPropertyChanged(string propertyName)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
+        /// <summary>
+        /// Открыть окно добавления нового клиента /
+        /// Open the new client adding window
+        /// </summary>
 		public void OpenNewClientWindow()
 		{
             NewClientWindow newClientWindow = new NewClientWindow();
             newClientWindow.ShowDialog();
 			bank.GetClients(Clients);
         }
+        /// <summary>
+        /// Удалить информацию о клиенте /
+        /// Delete the selected client information
+        /// </summary>
+        /// <param name="selectedClient"></param>
 		public void DeleteClient(Client selectedClient)
 		{
 			if (bank.RemoveClient(selectedClient))
@@ -148,6 +187,11 @@ namespace BankApp.ViewModel
 			}
 			bank.GetClients(Clients);
 		}
+        /// <summary>
+        /// Обновить информацию о клиенте /
+        /// Update the selected client information
+        /// </summary>
+        /// <param name="selectedClient"></param>
 		public void UpdateClientInformation(Client selectedClient)
 		{
 			if (bank.UpdateClient(selectedClient))
@@ -156,10 +200,22 @@ namespace BankApp.ViewModel
 			}
 			bank.GetClients(Clients);
 		}
-
+        /// <summary>
+        /// Заполнить коллекцию клиентов банка /
+        /// Fill the bank clients collection
+        /// </summary>
 		public void GetClients()
 		{
 			bank.GetClients(Clients);
 		}
+        //TODO: Добавлять информацию об изменения информации о клиенте
+        //TODO: Добавить возможность смены роли в процессе рабты приложения
+        //TODO: Добавить сортировку клиентов по алфавиту
+        //TODO: Добавить возможность выбора варианто сортировки*
+        //TODO: Добавить возможность создавать и удалять счета для выбранного клиента
+        //TODO: Добавить отображения счетов клиента в отдельном ListView
+        //TODO: Добавить кастомные исполения информационных окон вместо стандартных
+        //TODO: Добавить собственные единообразный стиль
+
     }
 }
