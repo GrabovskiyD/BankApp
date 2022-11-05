@@ -7,8 +7,8 @@
         xmlns:vm="clr-namespace:BankApp.ViewModel"
         xmlns:pba="clr-namespace:BankApp.ViewModel.CustomDPObjects"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="150" Width="240"
-        WindowStyle="None"
+        Title="" Height="200" Width="240"
+        WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner">
     <Window.Resources>

@@ -38,8 +38,15 @@ namespace BankApp.View
                 };
                 LoginWindow.Owner = this;
                 LoginWindow.ShowDialog();
-                MainWindowVM.GetClients();
-                Visibility = Visibility.Visible;
+                if(App.Employee == null)
+                {
+                    Close();
+                }
+                else
+                {
+                    MainWindowVM.GetClients();
+                    Visibility = Visibility.Visible;
+                }
             }
         }
         //TODO: Добавить проверку того, кто сейчас работает в программе    
