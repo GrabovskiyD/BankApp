@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankApp.View"
         xmlns:vm="clr-namespace:BankApp.ViewModel"
+        xmlns:pba="clr-namespace:BankApp.ViewModel.CustomDPObjects"
         mc:Ignorable="d"
         Title="LoginWindow" Height="150" Width="240"
         WindowStyle="None"
@@ -27,9 +28,9 @@
                  Margin="5, 5"
                  Height="20"
                  BorderThickness="0"/>
-        <TextBox Margin="5, 5"
+        <PasswordBox Margin="5, 5"
                  Height="20"
-                 Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                 pba:PasswordBoxAssistant.BindPassword="True" pba:PasswordBoxAssistant.BoundPassword="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Button Content="Войти"
                 Margin="5, 5"
                 Height="20"
