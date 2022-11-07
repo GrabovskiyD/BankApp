@@ -22,7 +22,7 @@ namespace BankApp.ViewModel
 
 		public ObservableCollection<Client> Clients { get; set; }
         public LoginWindowVM LoginWindowVM { get; set; }
-        #region Поля и свойства клиента
+
         private Client selectedClient;
         /// <summary>
         /// Клиент, выбранный в главном окне приложения /
@@ -38,106 +38,10 @@ namespace BankApp.ViewModel
 			}
 		}
 
-        private string lastName;
-        /// <summary>
-        /// Фамилия клиента /
-        /// Client lastname
-        /// </summary>
-        public string LastName
-		{
-			get { return lastName; }
-			set 
-			{ 
-				lastName = value;
-                SelectedClient.LastName = lastName;
-				OnPropertyChanged("LastName");
-			}
-		}
-        
-        private string firstName;
-        /// <summary>
-        /// Имя клиента /
-        /// Client firstname
-        /// </summary>
-        public string FirstName
-		{
-			get { return firstName; }
-			set 
-			{ 
-				firstName = value;
-                SelectedClient.FirstName = firstName;
-                OnPropertyChanged("FirstName");
-            }
-		}
-
-		private string middleName;
-        /// <summary>
-        /// Отчество клиента /
-        /// Client middlename
-        /// </summary>
-        public string MiddleName
-        {
-            get { return middleName; }
-            set
-            {
-                middleName = value;
-                SelectedClient.MiddleName = middleName;
-                OnPropertyChanged("MiddleName");
-            }
-        }
-
-        private string phoneNumber;
-        /// <summary>
-        /// Номер мобильного телефона клиента /
-        /// Client mobile phone number
-        /// </summary>
-        public string PhoneNumber
-        {
-            get { return phoneNumber; }
-            set
-            {
-                phoneNumber = value;
-                SelectedClient.PhoneNumber = phoneNumber;
-                OnPropertyChanged("PhoneNumber");
-            }
-        }
-
-        private string passportSeries;
-        /// <summary>
-        /// Серия паспорта клиента /
-        /// Client passport series
-        /// </summary>
-        public string PassportSeries
-        {
-            get { return passportSeries; }
-            set
-            {
-                passportSeries = value;
-                SelectedClient.PassportSeries = passportSeries;
-                OnPropertyChanged("PassportSeries");
-            }
-        }
-
-        private string passportNumber;
-        /// <summary>
-        /// Номер паспорта клиента /
-        /// Client passport number
-        /// </summary>
-        public string PassportNumber
-        {
-            get { return passportNumber; }
-            set
-            {
-                passportNumber = value;
-                SelectedClient.PassportNumber = passportNumber;
-                OnPropertyChanged("PassportNumber");
-            }
-        }
         /// <summary>
         /// Команда для открытия окна добавления нового клиента /
         /// Command to open the window for adding a new client
         /// </summary>
-		#endregion
         public OpenNewClientWindowCommand OpenNewClientWindowCommand { get; set; }
         /// <summary>
         /// Команда для удаления информации о клиенте /
@@ -198,6 +102,10 @@ namespace BankApp.ViewModel
 			{
 				MessageBox.Show("Информация обновлена");
 			}
+            else
+            {
+                MessageBox.Show("Не удалось обновить данные");
+            }
 			bank.GetClients(Clients);
 		}
         /// <summary>

@@ -1,6 +1,9 @@
-﻿using BankApp.ViewModel;
+﻿using BankApp.Model;
+using BankApp.Model.Interfaces;
+using BankApp.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +28,7 @@ namespace BankApp.View
         {
             InitializeComponent();
         }
+
         protected override void OnActivated(EventArgs e)
         {
             base.OnActivated(e);
@@ -44,9 +48,37 @@ namespace BankApp.View
                 }
                 else
                 {
+                    IsReadOnlySetter(App.Employee);
                     MainWindowVM.GetClients();
                     Visibility = Visibility.Visible;
                 }
+            }
+        }
+        private void IsReadOnlySetter(object item)
+        {
+            if (item == null)
+            {
+                return;
+            }
+            IEmployee employee = item as IEmployee;
+
+            if(employee is Manager)
+            {
+                lastNameTextBox.IsReadOnly = false;
+                firstNameTextBox.IsReadOnly = false;
+                middleNameTextBox.IsReadOnly = false;
+                phoneNumberTextBox.IsReadOnly = false;
+                passportSeriesTextBox.IsReadOnly = false;
+                passportNumberTextBox.IsReadOnly = false;
+            }
+            else if(employee is Consultant)
+            {
+                lastNameTextBox.IsReadOnly = true;
+                firstNameTextBox.IsReadOnly = true;
+                middleNameTextBox.IsReadOnly = true;
+                phoneNumberTextBox.IsReadOnly = false;
+                passportSeriesTextBox.IsReadOnly = true;
+                passportNumberTextBox.IsReadOnly = true;
             }
         }
         //TODO: Добавить проверку того, кто сейчас работает в программе    

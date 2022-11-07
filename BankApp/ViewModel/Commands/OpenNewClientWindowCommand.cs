@@ -1,4 +1,5 @@
-﻿using BankApp.View;
+﻿using BankApp.Model;
+using BankApp.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,11 @@ namespace BankApp.ViewModel.Commands
 
         public bool CanExecute(object? parameter)
         {
-            return true;
+            if(App.Employee is Manager)
+            {
+                return true;
+            }
+            return false;
         }
 
         public void Execute(object? parameter)

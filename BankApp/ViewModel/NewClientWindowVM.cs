@@ -217,6 +217,10 @@ namespace BankApp.ViewModel
 			{
 				MessageBox.Show("Информация о клиенте добавлена");
 			}
+            else
+            {
+                MessageBox.Show("Не удалось добавить информацию о новом клиенте");
+            }
         }
     }
 }
