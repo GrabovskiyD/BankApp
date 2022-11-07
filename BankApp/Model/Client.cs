@@ -48,6 +48,10 @@ namespace BankApp.Model
         /// Client passport series
         /// </summary>
         public string PassportSeries { get; set; }
+        [Ignore]
+        public string DisplayedPassportSeries { get; set; }
+        [Ignore]
+        public string DisplayedPassportNumber { get; set; }
         /// <summary>
         /// Номер паспорта клиента /
         /// Client passport number

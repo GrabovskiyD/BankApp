@@ -30,12 +30,15 @@ namespace BankApp.Model
                     {
                         clients.Add(new Client()
                         {
+                            Id = client.Id,
                             LastName = client.LastName,
                             FirstName = client.FirstName,
                             MiddleName = client.MiddleName,
                             PhoneNumber = client.PhoneNumber,
-                            PassportSeries = String.IsNullOrEmpty(client.PassportSeries) ? "" : "********",
-                            PassportNumber = String.IsNullOrEmpty(client.PassportNumber) ? "" : "********",
+                            DisplayedPassportSeries = String.IsNullOrEmpty(client.PassportSeries) ? "" : "********",
+                            PassportSeries = client.PassportSeries,
+                            DisplayedPassportNumber = String.IsNullOrEmpty(client.PassportNumber) ? "" : "********",
+                            PassportNumber = client.PassportNumber,
                             ModificationType = client.ModificationType,
                             ModificationTime = client.ModificationTime,
                             ChangedInfo = client.ChangedInfo,
@@ -44,7 +47,22 @@ namespace BankApp.Model
                     }
                     else if(App.Employee is Manager)
                     {
-                        bank.GetClients(clients);
+                        clients.Add(new Client()
+                        {
+                            Id = client.Id,
+                            LastName = client.LastName,
+                            FirstName = client.FirstName,
+                            MiddleName = client.MiddleName,
+                            PhoneNumber = client.PhoneNumber,
+                            DisplayedPassportSeries = client.PassportSeries,
+                            PassportSeries = client.PassportSeries,
+                            DisplayedPassportNumber = client.PassportNumber,
+                            PassportNumber = client.PassportNumber,
+                            ModificationType = client.ModificationType,
+                            ModificationTime = client.ModificationTime,
+                            ChangedInfo = client.ChangedInfo,
+                            ModificatedBy = client.ModificatedBy
+                        });
                     }
                 }
             }

@@ -146,7 +146,8 @@
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
-                <TextBox Grid.Column="1" 
+                <TextBox x:Name="firstNameTextBox"
+                         Grid.Column="1" 
                          Grid.Row="1"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Center"
@@ -161,7 +162,8 @@
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
-                <TextBox Grid.Column="1" 
+                <TextBox x:Name="middleNameTextBox"
+                         Grid.Column="1" 
                          Grid.Row="2"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Center"
@@ -176,7 +178,8 @@
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
-                <TextBox Grid.Column="1" 
+                <TextBox x:Name="phoneNumberTextBox"
+                         Grid.Column="1" 
                          Grid.Row="3"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Center"
@@ -191,7 +194,8 @@
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
-                <TextBox Grid.Column="1" 
+                <TextBox x:Name="passportSeriesTextBox"
+                         Grid.Column="1" 
                          Grid.Row="4"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Center"
@@ -202,11 +206,12 @@
                          BorderBrush="LightGray"
                          BorderThickness="1"
                          Width="320"
-                         Text="{Binding PassportSeries, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Text="{Binding DisplayedPassportSeries, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
-                <TextBox Grid.Column="1" 
+                <TextBox x:Name="passportNumberTextBox"
+                         Grid.Column="1" 
                          Grid.Row="5"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Center"
@@ -217,7 +222,7 @@
                          BorderBrush="LightGray"
                          BorderThickness="1"
                          Width="320"
-                         Text="{Binding PassportNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Text="{Binding DisplayedPassportNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          FontSize="14"
                          FontWeight="Medium"
                          FontFamily="Tahoma"/>
