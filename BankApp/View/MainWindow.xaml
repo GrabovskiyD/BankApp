@@ -14,6 +14,10 @@
         <vm:MainWindowVM x:Key="vm"/>
     </Window.Resources>
     <StackPanel Orientation="Horizontal" DataContext="{StaticResource vm}">
+        <StackPanel>
+            <TextBlock Text="Change us."/>
+            <TextBlock Text="Sort"/>
+        </StackPanel>
         <ListView ItemsSource="{Binding Clients}" 
                   Width="300" 
                   Margin="5"
