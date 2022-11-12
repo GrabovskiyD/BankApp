@@ -30,6 +30,8 @@ namespace BankApp.View
         }
         private void Authenticated(object? sender, EventArgs e)
         {
+            MainWindow = new MainWindow();
+            MainWindow.Show();
             Close();
         }
     }

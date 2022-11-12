@@ -77,7 +77,6 @@ namespace BankApp.ViewModel
                 Authenticated.Invoke(this, new EventArgs());
 			}
 		}
-		//TODO: Реализовать кастомный passwordbox с возможностью привязки данных
 		//TODO: Хранить пароли не в коде
     }
 }

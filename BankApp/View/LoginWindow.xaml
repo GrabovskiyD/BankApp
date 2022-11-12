@@ -10,7 +10,7 @@
         Title="" Height="200" Width="240"
         WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterOwner">
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <vm:LoginWindowVM x:Key="vm"/>
     </Window.Resources>

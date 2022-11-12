@@ -34,14 +34,6 @@ namespace BankApp.View
             base.OnActivated(e);
             if (App.Employee is null)
             {
-                Visibility = Visibility.Collapsed;
-                MainWindowVM = Resources["vm"] as MainWindowVM;
-                LoginWindow LoginWindow = new LoginWindow()
-                {
-                    MainWindow = this
-                };
-                LoginWindow.Owner = this;
-                LoginWindow.ShowDialog();
                 if(App.Employee == null)
                 {
                     Close();
@@ -50,7 +42,6 @@ namespace BankApp.View
                 {
                     IsReadOnlySetter(App.Employee);
                     MainWindowVM.GetClients();
-                    Visibility = Visibility.Visible;
                 }
             }
         }
