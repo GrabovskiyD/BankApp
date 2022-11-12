@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,52 +12,143 @@ namespace BankApp.Model
     /// Клиента банка /
     /// Bank client
     /// </summary>
-    public class Client
+    public class Client : INotifyPropertyChanged
     {
         /// <summary>
         /// Первичный ключ в БД /
         /// Primary key in DB
         /// </summary>
+        public int id;
         [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        public int Id 
+        {
+            get { return id; }
+            set
+            {
+                id = value;
+                OnPropertyChanged("Id");
+            }
+        }
         /// <summary>
         /// Фамилия клиента /
         /// Client lastname
         /// </summary>
+        private string lastName;
         [MaxLength(30)]
-        public string LastName { get; set; }
+        public string LastName 
+        { 
+            get { return lastName; }
+            set
+            {
+                lastName = value;
+                OnPropertyChanged("LastName");
+            }
+        }
         /// <summary>
         /// Имя клиента /
         /// Client firstname
         /// </summary>
+        private string firstName;
         [MaxLength(30)]
-        public string FirstName { get; set; }
+        public string FirstName
+        {
+            get { return firstName; }
+            set
+            {
+                firstName = value;
+                OnPropertyChanged("FirstName");
+            }
+        }
         /// <summary>
         /// Отчество клиента /
         /// Client middlename
         /// </summary>
+        private string middleName;
         [MaxLength(30)]
-        public string MiddleName { get; set; }
+        public string MiddleName 
+        {
+            get { return middleName; }
+            set
+            {
+                middleName = value;
+                OnPropertyChanged("MiddleName");
+            }
+        }
         /// <summary>
         /// Номер мобильного телефона клиента /
         /// Client mobile phone number
         /// </summary>
+        private string phoneNumber;
         [MaxLength(11)]
-        public string PhoneNumber { get; set; }
+        public string PhoneNumber 
+        {
+            get { return phoneNumber; }
+            set
+            {
+                phoneNumber = value;
+                OnPropertyChanged("PhoneNumber");
+            }
+        }
         /// <summary>
         /// Серия паспорта клиента /
         /// Client passport series
         /// </summary>
-        public string PassportSeries { get; set; }
+        private string passportSeries;
+        public string PassportSeries 
+        {
+            get { return passportSeries; }
+            set 
+            { 
+                passportSeries = value;
+                OnPropertyChanged("PassportSeries");
+            }
+        }
+        private string displayedPassportSeries;
         [Ignore]
-        public string DisplayedPassportSeries { get; set; }
-        [Ignore]
-        public string DisplayedPassportNumber { get; set; }
+        public string DisplayedPassportSeries 
+        {
+            get { return displayedPassportSeries; }
+            set
+            {
+                displayedPassportSeries = value;
+                if (displayedPassportSeries != null && !displayedPassportSeries.Contains("*"))
+                {
+                    PassportSeries = displayedPassportSeries;
+                    OnPropertyChanged("PassportSeries");
+                }
+                OnPropertyChanged("DisplayedPassportSeries");
+            } 
+        }
         /// <summary>
         /// Номер паспорта клиента /
         /// Client passport number
         /// </summary>
-        public string PassportNumber { get; set; }
+        private string passportNumber;
+        public string PassportNumber 
+        {
+            get { return passportNumber; }
+            set
+            {
+                passportNumber = value;
+                OnPropertyChanged("PassportNumber");
+            }
+        }
+        private string displayedPassportNumber;
+        [Ignore]
+        public string DisplayedPassportNumber
+        {
+            get { return displayedPassportNumber; }
+            set
+            {
+                displayedPassportNumber = value;
+                if (displayedPassportSeries != null && !displayedPassportNumber.Contains("*"))
+                {
+                    PassportNumber = displayedPassportNumber;
+                    OnPropertyChanged("PassportNumber");
+                }
+                OnPropertyChanged("DisplayedPassportNumebr");
+            }
+        }
         /// <summary>
         /// Тип изменения информации о клиенте /
         /// Type of customer information modification
@@ -77,5 +169,11 @@ namespace BankApp.Model
         /// Who made the changes
         /// </summary>
         public string ModificatedBy { get; set; }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
