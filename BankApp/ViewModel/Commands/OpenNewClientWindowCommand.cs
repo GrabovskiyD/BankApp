@@ -1,5 +1,6 @@
 ﻿using BankApp.Model;
 using BankApp.View;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +18,11 @@ namespace BankApp.ViewModel.Commands
             MainWindowVM = mainWindowVM;
         }
 
-        public event EventHandler? CanExecuteChanged;
-
+        public event EventHandler? CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
         public bool CanExecute(object? parameter)
         {
             if(App.Employee is Manager)

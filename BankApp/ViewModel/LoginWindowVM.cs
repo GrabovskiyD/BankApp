@@ -52,6 +52,7 @@ namespace BankApp.ViewModel
         public event PropertyChangedEventHandler? PropertyChanged;
 		
 		public event EventHandler Authenticated;
+        public event EventHandler CloseWindow;
         private void OnPropertyChanged(string propertyName)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -66,16 +67,41 @@ namespace BankApp.ViewModel
         /// </summary>
         public void Login()
 		{
-			if(Username.ToLower().Equals("consultant") && Password.Equals("qwerty"))
+			if(App.Employee is null)
 			{
-				App.Employee = new Consultant();
-				Authenticated.Invoke(this, new EventArgs());
-			}
-			else if(Username.ToLower().Equals("manager") && Password.Equals("complex_password"))
-			{
-				App.Employee = new Manager();
-                Authenticated.Invoke(this, new EventArgs());
-			}
+                if (Username.ToLower().Equals("consultant") && Password.Equals("qwerty"))
+                {
+                    App.Employee = new Consultant();
+                    Authenticated.Invoke(this, new EventArgs());
+                }
+                else if (Username.ToLower().Equals("manager") && Password.Equals("complex_password"))
+                {
+                    App.Employee = new Manager();
+                    Authenticated.Invoke(this, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Неправильный логин или пароль");
+                }
+            }
+            else
+            {
+                if (Username.ToLower().Equals("consultant") && Password.Equals("qwerty"))
+                {
+                    App.Employee = new Consultant();
+                    CloseWindow.Invoke(this, new EventArgs());
+                }
+                else if (Username.ToLower().Equals("manager") && Password.Equals("complex_password"))
+                {
+                    App.Employee = new Manager();
+                    CloseWindow.Invoke(this, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Неправильный логин или пароль");
+                }
+            }
+			
 		}
 		//TODO: Хранить пароли не в коде
     }

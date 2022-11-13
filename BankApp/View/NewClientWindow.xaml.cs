@@ -23,5 +23,9 @@ namespace BankApp.View
         {
             InitializeComponent();
         }
+        private void closeButtonClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

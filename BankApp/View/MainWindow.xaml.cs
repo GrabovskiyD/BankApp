@@ -23,10 +23,12 @@ namespace BankApp.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        MainWindowVM MainWindowVM;
+        public MainWindowVM MainWindowVM { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            MainWindowVM = Resources["vm"] as MainWindowVM;
+            MainWindowVM.MainWindow = this;
         }
 
         protected override void OnActivated(EventArgs e)
@@ -45,7 +47,7 @@ namespace BankApp.View
                 }
             }
         }
-        private void IsReadOnlySetter(object item)
+        public void IsReadOnlySetter(object item)
         {
             if (item == null)
             {
@@ -71,7 +73,6 @@ namespace BankApp.View
                 passportSeriesTextBox.IsReadOnly = true;
                 passportNumberTextBox.IsReadOnly = true;
             }
-        }
-        //TODO: Добавить проверку того, кто сейчас работает в программе    
+        }   
     }
 }

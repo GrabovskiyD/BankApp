@@ -22,6 +22,7 @@ namespace BankApp.ViewModel
 
 		public ObservableCollection<Client> Clients { get; set; }
         public LoginWindowVM LoginWindowVM { get; set; }
+        public MainWindow MainWindow { get; set; }
 
         private Client selectedClient;
         /// <summary>
@@ -53,11 +54,23 @@ namespace BankApp.ViewModel
         /// Command for updating client information
         /// </summary>
 		public UpdateClientInformationCommand UpdateClientInformationCommand { get; set; }
-		public MainWindowVM()
+        /// <summary>
+        /// Команда для изменения роли сотрудника/
+        /// Command for change employee role
+        /// </summary>
+        public ChangeEmployeeRoleCommand ChangeEmployeeRoleCommand { get; set; }
+        /// <summary>
+        /// Сортировка списка клиентов по алфавиту/
+        /// Sort the clients list by alphabet
+        /// </summary>
+        public SortClientsCommand SortClientsCommand { get; set; }
+        public MainWindowVM()
 		{
             OpenNewClientWindowCommand = new OpenNewClientWindowCommand(this);
 			DeleteClientCommand = new DeleteClientCommand(this);
 			UpdateClientInformationCommand = new UpdateClientInformationCommand(this);
+            ChangeEmployeeRoleCommand = new ChangeEmployeeRoleCommand(this);
+            SortClientsCommand = new SortClientsCommand(this);
 			Clients = new ObservableCollection<Client>();
 			bank = new BankProxy(this, new Bank());
 			bank.GetClients(Clients);
@@ -108,6 +121,28 @@ namespace BankApp.ViewModel
             }
 			bank.GetClients(Clients);
 		}
+        /// <summary>
+        /// Сменить роль работника/
+        /// Change the employee role
+        /// </summary>
+        public void ChangeEmployeeRole()
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.ShowDialog();
+            MainWindow.IsReadOnlySetter(App.Employee);
+            bank.GetClients(Clients);
+        }
+        public void SortClients(ObservableCollection<Client> clients)
+        {
+            var orderedClients = from c in clients
+                                 orderby c.LastName
+                                 select c;
+            clients.Clear();
+            foreach (var c in orderedClients)
+            {
+                clients.Add(c);
+            }
+        }
         /// <summary>
         /// Заполнить коллекцию клиентов банка /
         /// Fill the bank clients collection

@@ -16,10 +16,14 @@
     </Window.Resources>
     <StackPanel Orientation="Horizontal" DataContext="{StaticResource vm}">
         <StackPanel>
-            <TextBlock Text="Change us."
-                       Foreground="White"/>
-            <TextBlock Text="Sort"
-                       Foreground="White"/>
+            <Button Content="Change us."
+                    Foreground="White"
+                    Background="Transparent"
+                    Command="{Binding ChangeEmployeeRoleCommand}"/>
+            <Button Content="Sort"
+                    Foreground="White"
+                    Background="Transparent"
+                    Command="{Binding SortClientsCommand}"/>
         </StackPanel>
         <ListView ItemsSource="{Binding Clients}" 
                   Width="300" 

@@ -21,12 +21,13 @@ namespace BankApp.View
     public partial class LoginWindow : Window
     {
         public MainWindow MainWindow { get; set; }
-        LoginWindowVM loginWindowVM;
+        public LoginWindowVM loginWindowVM { get; set; }
         public LoginWindow()
         {
             InitializeComponent();
             loginWindowVM = Resources["vm"] as LoginWindowVM;
-            loginWindowVM.Authenticated += this.Authenticated;
+            loginWindowVM.Authenticated += Authenticated;
+            loginWindowVM.CloseWindow += CloseWindow;
         }
         private void Authenticated(object? sender, EventArgs e)
         {
@@ -36,6 +37,11 @@ namespace BankApp.View
         }
 
         private void closeButtonClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void CloseWindow(object? sender, EventArgs e)
         {
             Close();
         }

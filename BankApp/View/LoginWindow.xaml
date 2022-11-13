@@ -19,7 +19,7 @@
             <Button Height="20"
                     Width="20"
                     HorizontalAlignment="Right"
-                    Background="#FF212427"
+                    Background="Transparent"
                     BorderBrush="LightGray"
                     Click="closeButtonClick"/>
         </StackPanel>
