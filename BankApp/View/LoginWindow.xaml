@@ -7,33 +7,42 @@
         xmlns:vm="clr-namespace:BankApp.ViewModel"
         xmlns:pba="clr-namespace:BankApp.ViewModel.CustomDPObjects"
         mc:Ignorable="d"
-        Title="" Height="200" Width="240"
-        WindowStyle="SingleBorderWindow"
+        Title="" Height="200" Width="260"
+        WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <vm:LoginWindowVM x:Key="vm"/>
     </Window.Resources>
     <StackPanel DataContext="{StaticResource vm}">
+        <StackPanel>
+            <Button Height="20"
+                    Width="20"
+                    HorizontalAlignment="Right"
+                    Background="#FF212427"
+                    BorderBrush="LightGray"
+                    Click="closeButtonClick"/>
+        </StackPanel>
         <TextBox Text="Имя пользователя" 
-                 IsReadOnly="True"
                  Margin="5, 5"
                  Height="20"
-                 BorderThickness="0"/>
+                 Style="{StaticResource textBoxLabelsView}"/>
         <TextBox Margin="5, 5"
                  Height="20"
-                 Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                 Width="250"
+                 Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Style="{StaticResource textBoxInputView}"/>
         <TextBox Text="Пароль" 
-                 IsReadOnly="True"
                  Margin="5, 5"
                  Height="20"
-                 BorderThickness="0"/>
-        <PasswordBox Margin="5, 5"
-                 Height="20"
-                 pba:PasswordBoxAssistant.BindPassword="True" pba:PasswordBoxAssistant.BoundPassword="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                 Style="{StaticResource textBoxLabelsView}"/>
+        <PasswordBox Height="20"
+                     pba:PasswordBoxAssistant.BindPassword="True" pba:PasswordBoxAssistant.BoundPassword="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Style="{StaticResource passwordBoxView}"/>
         <Button Content="Войти"
-                Margin="5, 5"
+                Margin="5, 30"
                 Height="20"
-                Command="{Binding LoginCommand}"/>
+                Command="{Binding LoginCommand}"
+                Style="{StaticResource buttonsView}"/>
     </StackPanel>
 </Window>

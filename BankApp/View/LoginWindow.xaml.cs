@@ -34,5 +34,10 @@ namespace BankApp.View
             MainWindow.Show();
             Close();
         }
+
+        private void closeButtonClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
