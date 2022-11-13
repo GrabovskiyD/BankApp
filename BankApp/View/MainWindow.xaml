@@ -7,16 +7,19 @@
         xmlns:uc="clr-namespace:BankApp.View.UserControls"
         xmlns:vm="clr-namespace:BankApp.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="900" 
+        Title="MainWindow" Height="500" Width="1150" 
         ResizeMode="NoResize" 
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
     <Window.Resources>
         <vm:MainWindowVM x:Key="vm"/>
     </Window.Resources>
     <StackPanel Orientation="Horizontal" DataContext="{StaticResource vm}">
         <StackPanel>
-            <TextBlock Text="Change us."/>
-            <TextBlock Text="Sort"/>
+            <TextBlock Text="Change us."
+                       Foreground="White"/>
+            <TextBlock Text="Sort"
+                       Foreground="White"/>
         </StackPanel>
         <ListView ItemsSource="{Binding Clients}" 
                   Width="300" 
@@ -28,7 +31,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackPanel Width="520" Margin="5" DataContext="{Binding SelectedClient}">
+        <StackPanel Width="514" Margin="5" DataContext="{Binding SelectedClient}">
             <TextBox Text="Персональные данные клиента" 
                      HorizontalAlignment="Center" 
                      FontSize="18"
@@ -108,17 +111,32 @@
                          Text="{Binding DisplayedPassportNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Style="{StaticResource textBoxInputView}"/>
             </Grid>
-            <DockPanel Height="30" DataContext="{StaticResource vm}">
-                <Button Content="Добавить нового клиента"
-                        Command="{Binding OpenNewClientWindowCommand}"
-                        Style="{StaticResource buttonsView}"/>
-                <Button Content="Удалить информацию о клиенте"
-                        Command="{Binding DeleteClientCommand}"
-                        Style="{StaticResource buttonsView}" Background="#FF212427"/>
-                <Button Content="Сохранить изменения"
-                        Command="{Binding UpdateClientInformationCommand}"
-                        Style="{StaticResource buttonsView}"/>
-            </DockPanel>
         </StackPanel>
+        <Grid DataContext="{StaticResource vm}"
+                    VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" 
+                    Template="{StaticResource simpleButtonTemplate}"
+                    Content="Добавить нового клиента"
+                    Command="{Binding OpenNewClientWindowCommand}"
+                    Style="{StaticResource buttonsView}"
+                    Margin="0, 10"/>
+            <Button Grid.Row="1" 
+                    Template="{StaticResource simpleButtonTemplate}" 
+                    Content="Удалить информацию"
+                    Command="{Binding DeleteClientCommand}"
+                    Style="{StaticResource buttonsView}" Background="#FF212427"
+                    Margin="0, 10"/>
+            <Button Grid.Row="2"
+                    Template="{StaticResource simpleButtonTemplate}" 
+                    Content="Сохранить изменения"
+                    Command="{Binding UpdateClientInformationCommand}"
+                    Style="{StaticResource buttonsView}"
+                    Margin="0, 10"/>
+        </Grid>
     </StackPanel>
 </Window>

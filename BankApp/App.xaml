@@ -60,5 +60,43 @@
             <Setter Property="BorderBrush" Value="LightGray"/>
             <Setter Property="Margin" Value="5, 5"/>
         </Style>
+        <ControlTemplate x:Key="simpleButtonTemplate" TargetType="Button">
+            <Grid Name="button" Width="220">
+                <Border CornerRadius="12" BorderThickness="1">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="BorderBrush" Value="LightGray"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=button}"
+                                             Value="True">
+                                    <Setter Property="BorderBrush" Value="White"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <Grid Width="200">
+                        <Label Content="{TemplateBinding Content}"
+                               Background="#FF212427"
+                               FontSize="14"
+                               FontFamily="Tahoma"
+                               FontWeight="DemiBold"
+                               VerticalContentAlignment="Center"
+                               HorizontalAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Setter Property="Foreground" Value="LightGray"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=button}"
+                                                     Value="True">
+                                            <Setter Property="Foreground" Value="White"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                    </Grid>
+                </Border>
+            </Grid>
+        </ControlTemplate>
     </Application.Resources>
 </Application>

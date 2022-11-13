@@ -39,9 +39,9 @@
         <PasswordBox Height="20"
                      pba:PasswordBoxAssistant.BindPassword="True" pba:PasswordBoxAssistant.BoundPassword="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Style="{StaticResource passwordBoxView}"/>
-        <Button Content="Войти"
-                Margin="5, 30"
-                Height="20"
+        <Button Template="{StaticResource simpleButtonTemplate}"
+                Content="Войти"
+                Margin="0, 20"
                 Command="{Binding LoginCommand}"
                 Style="{StaticResource buttonsView}"/>
     </StackPanel>
