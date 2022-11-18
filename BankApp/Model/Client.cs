@@ -141,7 +141,7 @@ namespace BankApp.Model
             set
             {
                 displayedPassportNumber = value;
-                if (displayedPassportSeries != null && !displayedPassportNumber.Contains("*"))
+                if (displayedPassportNumber != null && !displayedPassportNumber.Contains("*"))
                 {
                     PassportNumber = displayedPassportNumber;
                     OnPropertyChanged("PassportNumber");
