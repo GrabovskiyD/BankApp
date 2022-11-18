@@ -36,7 +36,7 @@ namespace BankApp.View
             Close();
         }
 
-        private void closeButtonClick(object sender, RoutedEventArgs e)
+        private void СloseButtonClick(object sender, RoutedEventArgs e)
         {
             Close();
         }

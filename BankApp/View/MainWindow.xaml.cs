@@ -73,6 +73,10 @@ namespace BankApp.View
                 passportSeriesTextBox.IsReadOnly = true;
                 passportNumberTextBox.IsReadOnly = true;
             }
-        }   
+        }
+        private void СloseButtonClick(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
     }
 }

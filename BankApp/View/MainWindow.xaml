@@ -7,140 +7,194 @@
         xmlns:uc="clr-namespace:BankApp.View.UserControls"
         xmlns:vm="clr-namespace:BankApp.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="1150" 
-        ResizeMode="NoResize" 
-        WindowStartupLocation="CenterScreen"
-        WindowStyle="None">
+        Height="600" Width="800"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        x:Name="AppMainWindow"
+        WindowStartupLocation="CenterScreen">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CornerRadius="0"
+                      GlassFrameThickness="1"
+                      UseAeroCaptionButtons="False"
+                      NonClientFrameEdges="None" />
+    </WindowChrome.WindowChrome>
     <Window.Resources>
         <vm:MainWindowVM x:Key="vm"/>
     </Window.Resources>
-    <StackPanel Orientation="Horizontal" DataContext="{StaticResource vm}">
-        <StackPanel>
-            <Button Content="Change us."
-                    Foreground="White"
-                    Background="Transparent"
-                    Command="{Binding ChangeEmployeeRoleCommand}"/>
-            <Button Content="Sort"
-                    Foreground="White"
-                    Background="Transparent"
-                    Command="{Binding SortClientsCommand}"/>
-        </StackPanel>
-        <ListView ItemsSource="{Binding Clients}" 
-                  Width="300" 
-                  Margin="5"
-                  SelectedValue="{Binding SelectedClient, Mode=TwoWay}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <uc:DisplayClient Client="{Binding}"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <StackPanel Width="514" Margin="5" DataContext="{Binding SelectedClient}">
-            <TextBox Text="Персональные данные клиента" 
-                     HorizontalAlignment="Center" 
-                     FontSize="18"
-                     FontWeight="Bold"
-                     Style="{StaticResource textBoxLabelsView}"/>
-            <Grid Margin="10, 30">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="140"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <TextBox Grid.Column="0" 
-                         Grid.Row="0"
-                         Text="Фамилия"
-                         Style="{StaticResource textBoxLabelsView}"/>
-                <TextBox Grid.Column="0" 
-                         Grid.Row="1"
-                         Text="Имя"
-                         Style="{StaticResource textBoxLabelsView}"/>
-                <TextBox Grid.Column="0" 
-                         Grid.Row="2"
-                         Text="Отчество"
-                         Style="{StaticResource textBoxLabelsView}"/>
-                <TextBox Grid.Column="0" 
-                         Grid.Row="3"
-                         Text="Номер телефона"
-                         Style="{StaticResource textBoxLabelsView}"/>
-                <TextBox Grid.Column="0" 
-                         Grid.Row="4"
-                         Text="Серия паспорта"
-                         Style="{StaticResource textBoxLabelsView}"/>
-                <TextBox Grid.Column="0" 
-                         Grid.Row="5"
-                         Text="Номер паспорта"
-                         Style="{StaticResource textBoxLabelsView}"/>
-                <TextBox x:Name="lastNameTextBox"  
-                         Grid.Column="1" 
-                         Grid.Row="0"
-                         Width="320"
-                         Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                         Style="{StaticResource textBoxInputView}"/>
-                <TextBox x:Name="firstNameTextBox"
-                         Grid.Column="1" 
-                         Grid.Row="1"
-                         Width="320"
-                         Text="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                         Style="{StaticResource textBoxInputView}"/>
-                <TextBox x:Name="middleNameTextBox"
-                         Grid.Column="1" 
-                         Grid.Row="2"
-                         Width="320"
-                         Text="{Binding MiddleName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                         Style="{StaticResource textBoxInputView}"/>
-                <TextBox x:Name="phoneNumberTextBox"
-                         Grid.Column="1" 
-                         Grid.Row="3"
-                         Width="320"
-                         Text="{Binding PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                         Style="{StaticResource textBoxInputView}"/>
-                <TextBox x:Name="passportSeriesTextBox"
-                         Grid.Column="1" 
-                         Grid.Row="4"
-                         Width="320"
-                         Text="{Binding DisplayedPassportSeries, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                         Style="{StaticResource textBoxInputView}"/>
-                <TextBox x:Name="passportNumberTextBox"
-                         Grid.Column="1" 
-                         Grid.Row="5"
-                         Width="320"
-                         Text="{Binding DisplayedPassportNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                         Style="{StaticResource textBoxInputView}"/>
-            </Grid>
-        </StackPanel>
-        <Grid DataContext="{StaticResource vm}"
-                    VerticalAlignment="Center">
+    <Border CornerRadius="20" Background="{StaticResource BackgroundMainBrush}"
+            Padding="10"
+            DataContext="{StaticResource vm}">
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="35"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button Grid.Row="0" 
-                    Template="{StaticResource simpleButtonTemplate}"
-                    Content="Добавить нового клиента"
-                    Command="{Binding OpenNewClientWindowCommand}"
-                    Style="{StaticResource buttonsView}"
-                    Margin="0, 10"/>
-            <Button Grid.Row="1" 
-                    Template="{StaticResource simpleButtonTemplate}" 
-                    Content="Удалить информацию"
-                    Command="{Binding DeleteClientCommand}"
-                    Style="{StaticResource buttonsView}" Background="#FF212427"
-                    Margin="0, 10"/>
-            <Button Grid.Row="2"
-                    Template="{StaticResource simpleButtonTemplate}" 
-                    Content="Сохранить изменения"
-                    Command="{Binding UpdateClientInformationCommand}"
-                    Style="{StaticResource buttonsView}"
-                    Margin="0, 10"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.7*"/>
+                <ColumnDefinition Width="0.7*"/>
+                <ColumnDefinition Width="0.15*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0"
+                       Text="BankApp"
+                       Foreground="{StaticResource ForegroundMainBrush}"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="20, 0, 0, 0"
+                       FontFamily="{StaticResource RobotoBold}"
+                       FontWeight="Bold"
+                       FontSize="18"/>
+            <StackPanel Grid.Row="0"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Panel.ZIndex="1">
+                <Button Grid.Column="0" Style="{StaticResource ButtonsTheme}"
+                        Content="{StaticResource MinimizeWindowIcon}"
+                        Margin="0, 0, 15, 0"/>
+                <Button Grid.Column="1" Style="{StaticResource ButtonsTheme}"
+                        Content="{StaticResource MaximizeWindowIcon}"
+                        Margin="0, 0, 15, 0"/>
+                <Button Grid.Column="2" Style="{StaticResource ButtonsTheme}"
+                        Content="{StaticResource CloseWindowIcon}"
+                        Margin="0, 0, 15, 0"
+                        Click="СloseButtonClick"/>
+            </StackPanel>
+            <Grid Grid.Row="1"
+                  Grid.RowSpan="2"
+                  Grid.Column="0"
+                  Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.15*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Button Style="{StaticResource ButtonsTheme}"
+                            Content="{StaticResource ChangeUserIcon}"
+                            Command="{Binding ChangeEmployeeRoleCommand}"/>
+                    <Button Style="{StaticResource ButtonsTheme}"
+                            Content="{StaticResource SortIcon}"
+                            Command="{Binding SortClientsCommand}"/>
+                </StackPanel>
+                <ListView ItemsSource="{Binding Clients}"
+                          Grid.Column="1"
+                          Style="{StaticResource ListViewTheme}"
+                          Margin="5, 0, 0, 11">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <uc:DisplayClient Client="{Binding}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <Grid Grid.Row="1"
+                  Grid.Column="1"
+                  Grid.ColumnSpan="2"
+                  Margin="5, 10, 10, 10"
+                  DataContext="{Binding SelectedClient}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.6*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Row="0"
+                         Grid.ColumnSpan="2"
+                         Style="{StaticResource MainLabelTheme}"
+                         Text="Персональные данные клиента"
+                         FontSize="18"/>
+                <TextBox Grid.Row="1"
+                         Grid.Column="0"
+                         Style="{StaticResource TextBoxesTheme}"
+                         Background="{StaticResource BackgroundMainBrush}"
+                         Text="Фамилия"/>
+                <TextBox Grid.Row="2"
+                         Grid.Column="0"
+                         Style="{StaticResource TextBoxesTheme}"
+                         Background="{StaticResource BackgroundMainBrush}"
+                         Text="Имя"/>
+                <TextBox Grid.Row="3"
+                         Grid.Column="0"
+                         Style="{StaticResource TextBoxesTheme}"
+                         Background="{StaticResource BackgroundMainBrush}"
+                         Text="Отчество"/>
+                <TextBox Grid.Row="4"
+                         Grid.Column="0"
+                         Style="{StaticResource TextBoxesTheme}"
+                         Background="{StaticResource BackgroundMainBrush}"
+                         Text="Номер телефона"/>
+                <TextBox Grid.Row="5"
+                         Grid.Column="0"
+                         Style="{StaticResource TextBoxesTheme}"
+                         Background="{StaticResource BackgroundMainBrush}"
+                         Text="Серия паспорта"/>
+                <TextBox Grid.Row="6"
+                         Grid.Column="0"
+                         Style="{StaticResource TextBoxesTheme}"
+                         Background="{StaticResource BackgroundMainBrush}"
+                         Text="Номер паспорта"/>
+                <TextBox x:Name="lastNameTextBox"
+                         Grid.Row="1"
+                         Grid.Column="1"
+                         Style="{StaticResource TextBoxesTheme}"
+                         Background="{StaticResource BackgroundControlBrush}"
+                         Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="firstNameTextBox"
+                         Grid.Row="2"
+                         Grid.Column="1"
+                         Style="{StaticResource TextBoxesTheme}"
+                         Background="{StaticResource BackgroundControlBrush}"
+                         Text="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="middleNameTextBox"
+                         Grid.Row="3"
+                         Grid.Column="1"
+                         Style="{StaticResource TextBoxesTheme}"
+                         Background="{StaticResource BackgroundControlBrush}"
+                         Text="{Binding MiddleName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="phoneNumberTextBox"
+                         Grid.Row="4"
+                         Grid.Column="1"
+                         Style="{StaticResource TextBoxesTheme}"
+                         Background="{StaticResource BackgroundControlBrush}"
+                         Text="{Binding PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="passportSeriesTextBox"
+                         Grid.Row="5"
+                         Grid.Column="1"
+                         Style="{StaticResource TextBoxesTheme}"
+                         Background="{StaticResource BackgroundControlBrush}"
+                         Text="{Binding DisplayedPassportSeries, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="passportNumberTextBox"
+                         Grid.Row="6"
+                         Grid.Column="1"
+                         Style="{StaticResource TextBoxesTheme}"
+                         Background="{StaticResource BackgroundControlBrush}"
+                         Text="{Binding DisplayedPassportNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            </Grid>
+            <StackPanel Grid.Column="3"
+                        Grid.Row="1"
+                        Margin="0, 0, 15, 11"
+                        VerticalAlignment="Bottom">
+                <Button Style="{StaticResource ButtonsTheme}"
+                        Content="{StaticResource AddButtonIcon}"
+                        Command="{Binding OpenNewClientWindowCommand}"/>
+                <Button Style="{StaticResource ButtonsTheme}"
+                        Content="{StaticResource EditButtonIcon}"
+                        Command="{Binding DeleteClientCommand}"/>
+                <Button Style="{StaticResource ButtonsTheme}"
+                        Content="{StaticResource DeleteButtonIcon}"
+                        Command="{Binding UpdateClientInformationCommand}"/>
+            </StackPanel>
         </Grid>
-    </StackPanel>
+    </Border>
 </Window>

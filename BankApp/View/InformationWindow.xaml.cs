@@ -15,17 +15,13 @@ using System.Windows.Shapes;
 namespace BankApp.View
 {
     /// <summary>
-    /// Логика взаимодействия для NewClientWindow.xaml
+    /// Логика взаимодействия для InformationWindow.xaml
     /// </summary>
-    public partial class NewClientWindow : Window
+    public partial class InformationWindow : Window
     {
-        public NewClientWindow()
+        public InformationWindow()
         {
             InitializeComponent();
-        }
-        private void СloseButtonClick(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }

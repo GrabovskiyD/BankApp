@@ -4,99 +4,16 @@
              xmlns:local="clr-namespace:BankApp"
              StartupUri="View/LoginWindow.xaml">
     <Application.Resources>
-        <Style x:Name="mainWindowView" TargetType="Window">
-            <Setter Property="Background" Value="#FF212427"/>
-        </Style>
-        <Style x:Name="stackPanelView" TargetType="StackPanel">
-            <Setter Property="Background" Value="#FF212427"/>
-        </Style>
-        <Style x:Name="gridView" TargetType="Grid">
-            <Setter Property="Background" Value="#FF212427"/>
-        </Style>
-        <Style x:Name="listViewView" TargetType="ListView">
-            <Setter Property="Background" Value="#FF212427"/>
-        </Style>
-        <Style x:Name="listViewItemView" TargetType="ListViewItem">
-            <Setter Property="Background" Value="#FF212427"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontFamily" Value="Tahoma"/>
-            <Setter Property="FontWeight" Value="Medium"/>
-            <Setter Property="FontSize" Value="14"/>
-        </Style>
-        <Style x:Key="textBoxView" TargetType="TextBox">
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="Background" Value="#FF212427"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="FontFamily" Value="Tahoma"/>
-            <Setter Property="FontWeight" Value="Medium"/>
-            <Setter Property="FontSize" Value="14"/>
-        </Style>
-        <Style x:Key="textBoxLabelsView" TargetType="TextBox" BasedOn="{StaticResource textBoxView}">
-            <Setter Property="IsReadOnly" Value="True"/>
-            <Setter Property="Margin" Value="0, 10"/>
-        </Style>
-        <Style x:Key="textBoxInputView" TargetType="TextBox" BasedOn="{StaticResource textBoxView}">
-            <Setter Property="Margin" Value="10, 10"/>
-            <Setter Property="BorderBrush" Value="LightGray"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-        </Style>
-        <Style x:Key="buttonsView" TargetType="Button">
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="10, 0"/>
-            <Setter Property="Background" Value="#FF212427"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderBrush" Value="LightGray"/>
-        </Style>
-        <Style x:Key="passwordBoxView" TargetType="PasswordBox">
-            <Setter Property="Background" Value="#FF212427"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderBrush" Value="LightGray"/>
-            <Setter Property="Margin" Value="5, 5"/>
-        </Style>
-        <ControlTemplate x:Key="simpleButtonTemplate" TargetType="Button">
-            <Grid Name="button" Width="220">
-                <Border CornerRadius="12" BorderThickness="1">
-                    <Border.Style>
-                        <Style TargetType="Border">
-                            <Setter Property="BorderBrush" Value="LightGray"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=button}"
-                                             Value="True">
-                                    <Setter Property="BorderBrush" Value="White"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-                    <Grid Width="200">
-                        <Label Content="{TemplateBinding Content}"
-                               Background="#FF212427"
-                               FontSize="14"
-                               FontFamily="Tahoma"
-                               FontWeight="DemiBold"
-                               VerticalContentAlignment="Center"
-                               HorizontalAlignment="Center">
-                            <Label.Style>
-                                <Style TargetType="Label">
-                                    <Setter Property="Foreground" Value="LightGray"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=button}"
-                                                     Value="True">
-                                            <Setter Property="Foreground" Value="White"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Label.Style>
-                        </Label>
-                    </Grid>
-                </Border>
-            </Grid>
-        </ControlTemplate>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Icons.xaml"/>
+                <ResourceDictionary Source="Resources/Fonts.xaml"/>
+                <ResourceDictionary Source="Themes/Colors.xaml"/>
+                <ResourceDictionary Source="Themes/PasswordBoxTheme.xaml"/>
+                <ResourceDictionary Source="Themes/ListViewTheme.xaml"/>
+                <ResourceDictionary Source="Themes/TextBoxesTheme.xaml"/>
+                <ResourceDictionary Source="Themes/ButtonsTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
