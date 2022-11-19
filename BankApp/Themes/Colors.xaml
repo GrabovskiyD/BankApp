@@ -1,11 +1,23 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Color x:Key="BackgroundMain">#272537</Color>
+    <Color x:Key="BackgroundMain">#302060</Color>
     <SolidColorBrush x:Key="BackgroundMainBrush" Color="{StaticResource BackgroundMain}"/>
 
-    <Color x:Key="BackgroundControl">#474365</Color>
+    <Color x:Key="BackgroundControl">#A090E0</Color>
     <SolidColorBrush x:Key="BackgroundControlBrush" Color="{StaticResource BackgroundControl}"/>
 
-    <Color x:Key="ForegroundMain">#ffffff</Color>
+    <Color x:Key="BackgroundControlMouseOver"></Color>
+    <SolidColorBrush x:Key="BackgroundControlMouseOverBrush" Color="{StaticResource BackgroundControlMouseOver}"/>
+
+    <Color x:Key="ForegroundMain">white</Color>
     <SolidColorBrush x:Key="ForegroundMainBrush" Color="{StaticResource ForegroundMain}"/>
+
+    <Color x:Key="ForegroundControl">#A090E0</Color>
+    <SolidColorBrush x:Key="ForegroundControlBrush" Color="{StaticResource ForegroundControl}"/>
+
+    <Color x:Key="ForegroundMouseOverDark">#303040</Color>
+    <SolidColorBrush x:Key="ForegroundMouseOverDarkBrush" Color="{StaticResource ForegroundMouseOverDark}"/>
+
+    <Color x:Key="ForegroundMouseOverLight">#b0a0f0</Color>
+    <SolidColorBrush x:Key="ForegroundMouseOverLightBrush" Color="{StaticResource ForegroundMouseOverLight}"/>
 </ResourceDictionary>

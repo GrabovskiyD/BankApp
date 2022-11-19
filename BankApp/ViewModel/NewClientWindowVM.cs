@@ -1,4 +1,5 @@
 ﻿using BankApp.Model;
+using BankApp.View;
 using BankApp.ViewModel.Commands;
 using BankApp.ViewModel.Helpers;
 using System;
@@ -215,11 +216,15 @@ namespace BankApp.ViewModel
 		{
 			if (DatabaseHelper.Insert(client))
 			{
-				MessageBox.Show("Информация о клиенте добавлена");
-			}
+                InformationWindow informationWindow = new InformationWindow();
+                informationWindow.Text = "Информация о клиенте добавлена";
+                informationWindow.Show();
+            }
             else
             {
-                MessageBox.Show("Не удалось добавить информацию о новом клиенте");
+                InformationWindow informationWindow = new InformationWindow();
+                informationWindow.Text = "Не удалось добавить информацию о новом клиенте";
+                informationWindow.Show();
             }
         }
     }

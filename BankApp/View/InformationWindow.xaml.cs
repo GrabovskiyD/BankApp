@@ -19,6 +19,19 @@ namespace BankApp.View
     /// </summary>
     public partial class InformationWindow : Window
     {
+        private string text;
+        public string Text 
+        {
+            get => text;
+            set
+            {
+                if (!String.IsNullOrEmpty(value))
+                {
+                    text = value;
+                    informationTextBox.Text = text;
+                }
+            }
+        }
         public InformationWindow()
         {
             InitializeComponent();

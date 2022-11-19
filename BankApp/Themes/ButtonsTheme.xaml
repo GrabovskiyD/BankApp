@@ -5,21 +5,46 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Grid Height="30"
-                              Width="30"
-                              Margin="0, 5"
-                              VerticalAlignment="Center"
-                              HorizontalAlignment="Center"
-                              Background="{StaticResource BackgroundMainBrush}">
-                            <ContentControl Content="{TemplateBinding Content}"
+                        <Border x:Name="SmallButtonBorder"
+                                Height="30"
+                                Width="30"
+                                Margin="0, 5"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                CornerRadius="10"
+                                Background="{DynamicResource BackgroundMainBrush}">
+                            <ContentControl x:Name="ButtonContent" Content="{TemplateBinding Content}"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{StaticResource BackgroundControlBrush}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="SmallButtonBorder"
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            To="{TemplateBinding Background}"
+                                                            Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="SmallButtonBorder"
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            To="{DynamicResource BackgroundControlMouseOver}"
+                                                            Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState Name="Pressed">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="SmallButtonBorder"
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            To="{DynamicResource BackgroundMain}"
+                                                            Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -35,25 +60,58 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Grid Background="Transparent">
-                            <Border CornerRadius="10"
-                                    BorderBrush="{StaticResource BackgroundControlBrush}"
-                                    BorderThickness="2">
-                                <ContentControl Content="{TemplateBinding Content}"
-                                                Foreground="{StaticResource ForegroundMainBrush}"
+                        <Border x:Name="LongButtonBorder" CornerRadius="10"
+                                BorderBrush="{DynamicResource BackgroundControlBrush}"
+                                BorderThickness="2"
+                                Background="{DynamicResource BackgroundMainBrush}">
+                                <ContentControl x:Name="ButtonContentControl" Content="{TemplateBinding Content}"
+                                                Foreground="{DynamicResource ForegroundControlBrush}"
                                                 VerticalAlignment="Center"
-                                                HorizontalContentAlignment="Left"
-                                                VerticalContentAlignment="Center"
+                                                HorizontalAlignment="Center"
                                                 FontFamily="{StaticResource RobotoMedium}"
                                                 FontWeight="Medium"
                                                 FontSize="16"/>
-                            </Border>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{StaticResource BackgroundControlBrush}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="LongButtonBorder"
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            To="{TemplateBinding Background}"
+                                                            Duration="0:0:0.3"/>
+                                            <ColorAnimation Storyboard.TargetName="ButtonContentControl"
+                                                            Storyboard.TargetProperty="(ContentControl.Foreground).(SolidColorBrush.Color)"
+                                                            To="{TemplateBinding Foreground}"
+                                                            Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="LongButtonBorder"
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            To="{DynamicResource BackgroundControlMouseOver}"
+                                                            Duration="0:0:0.3"/>
+                                            <ColorAnimation Storyboard.TargetName="ButtonContentControl"
+                                                            Storyboard.TargetProperty="(ContentControl.Foreground).(SolidColorBrush.Color)"
+                                                            To="{DynamicResource ForegroundMain}"
+                                                            Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState Name="Pressed">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="LongButtonBorder"
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            To="{DynamicResource BackgroundControl}"
+                                                            Duration="0:0:0.3"/>
+                                            <ColorAnimation Storyboard.TargetName="LongButtonBorder"
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            To="{DynamicResource ForegroundControl}"
+                                                            Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
