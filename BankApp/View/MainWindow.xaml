@@ -37,31 +37,32 @@
                 <ColumnDefinition Width="0.15*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0"
-                       Grid.Column="0"
+                       Grid.Column="2"
+                       Grid.ColumnSpan="2"
                        Text="BankApp"
                        Foreground="{StaticResource ForegroundMainBrush}"
-                       HorizontalAlignment="Left"
+                       HorizontalAlignment="Right"
                        VerticalAlignment="Center"
-                       Margin="20, 0, 0, 0"
+                       Margin="0, 0, 20, 0"
                        FontFamily="{StaticResource RobotoBold}"
                        FontWeight="Bold"
                        FontSize="18"/>
             <StackPanel Grid.Row="0"
-                        Grid.Column="2"
-                        Grid.ColumnSpan="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
                         Orientation="Horizontal"
-                        HorizontalAlignment="Right"
-                        Panel.ZIndex="1">
-                <Button Grid.Column="0" Style="{StaticResource ButtonsTheme}"
-                        Content="{StaticResource MinimizeWindowIcon}"
-                        Margin="0, 0, 15, 0"/>
-                <Button Grid.Column="1" Style="{StaticResource ButtonsTheme}"
-                        Content="{StaticResource MaximizeWindowIcon}"
-                        Margin="0, 0, 15, 0"/>
+                        HorizontalAlignment="Left"
+                        Margin="0, 0, 10, 0">
                 <Button Grid.Column="2" Style="{StaticResource ButtonsTheme}"
                         Content="{StaticResource CloseWindowIcon}"
                         Margin="0, 0, 15, 0"
                         Click="СloseButtonClick"/>
+                <Button Grid.Column="1" Style="{StaticResource ButtonsTheme}"
+                        Content="{StaticResource MaximizeWindowIcon}"
+                        Margin="0, 0, 15, 0"/>
+                <Button Grid.Column="0" Style="{StaticResource ButtonsTheme}"
+                        Content="{StaticResource MinimizeWindowIcon}"
+                        Margin="0, 0, 15, 0"/>
             </StackPanel>
             <Grid Grid.Row="1"
                   Grid.RowSpan="2"
@@ -81,7 +82,7 @@
                 </StackPanel>
                 <ListView ItemsSource="{Binding Clients}"
                           Grid.Column="1"
-                          Style="{StaticResource ListViewTheme}"
+                          
                           Margin="5, 0, 0, 11">
                     <ListView.ItemTemplate>
                         <DataTemplate>

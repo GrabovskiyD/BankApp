@@ -15,6 +15,11 @@
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"/>
                         </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource BackgroundControlBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -36,10 +41,9 @@
                                     BorderThickness="2">
                                 <ContentControl Content="{TemplateBinding Content}"
                                                 Foreground="{StaticResource ForegroundMainBrush}"
-                                                HorizontalContentAlignment="Center"
-                                                VerticalContentAlignment="Center"
-                                                HorizontalAlignment="Center"
                                                 VerticalAlignment="Center"
+                                                HorizontalContentAlignment="Left"
+                                                VerticalContentAlignment="Center"
                                                 FontFamily="{StaticResource RobotoMedium}"
                                                 FontWeight="Medium"
                                                 FontSize="16"/>

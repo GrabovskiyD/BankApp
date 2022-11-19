@@ -29,19 +29,18 @@
                             CornerRadius="10"
                             Margin="5, 10">
                         <TextBox Background="Transparent"
+                             VerticalAlignment="Center"
                              HorizontalContentAlignment="Left"
                              VerticalContentAlignment="Center"
-                             HorizontalAlignment="Left"
-                             VerticalAlignment="Center"
                              IsReadOnly="{TemplateBinding IsReadOnly}"
                              FontFamily="{StaticResource RobotoMedium}"
                              FontWeight="Medium"
                              FontSize="14"
-                             Text="{TemplateBinding Text}"
+                             Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                              Foreground="{StaticResource ForegroundMainBrush}"
                              BorderBrush="{StaticResource BackgroundMainBrush}"
                              BorderThickness="0"
-                             Padding="5, 0, 0, 0"/>
+                             CaretBrush="{StaticResource ForegroundMainBrush}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

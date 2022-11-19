@@ -64,12 +64,12 @@
                 <TextBox Grid.Row="0"
                      Grid.Column="1"
                      Style="{StaticResource TextBoxesTheme}"
+                     DataContext="{StaticResource vm}"
                      Background="{StaticResource BackgroundControlBrush}"
                      Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <PasswordBox Grid.Row="1"
                              Grid.Column="1"
-                             pba:PasswordBoxAssistant.BindPassword="True" pba:PasswordBoxAssistant.BoundPassword="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                             Style="{StaticResource PasswordBoxTheme}"
+                             Style="{StaticResource PasswordBoxTheme}"                             
                              Background="{StaticResource BackgroundControlBrush}"/>
                 <Button Grid.Row="2"
                         Grid.ColumnSpan="2"
