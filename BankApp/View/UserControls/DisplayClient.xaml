@@ -4,39 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BankApp.View.UserControls"
+             xmlns:viewmodel="clr-namespace:BankApp.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowVM}"
              mc:Ignorable="d" 
-             d:DesignHeight="180" d:DesignWidth="300"
-             Background="Transparent">
-    <StackPanel Background="{StaticResource BackgroundMainBrush}">
-        <StackPanel Orientation="Horizontal">
-            <TextBox IsReadOnly="True"
-                     Style="{StaticResource TextBoxesTheme}"
-                     Text="{Binding LastName}"
-                     Background="{StaticResource BackgroundControlBrush}"/>
-            <TextBox IsReadOnly="True"
-                     Style="{StaticResource TextBoxesTheme}"
-                     Text="{Binding FirstName}"
-                     Background="{StaticResource BackgroundControlBrush}"/>
-            <TextBox IsReadOnly="True"
-                     Style="{StaticResource TextBoxesTheme}"
-                     Text="{Binding MiddleName}"
-                     Background="{StaticResource BackgroundControlBrush}"/>
-        </StackPanel>
-        <TextBox IsReadOnly="True"
-                 Style="{StaticResource TextBoxesTheme}"
-                 Text="{Binding ModificationType}"
-                 Background="{StaticResource BackgroundControlBrush}"/>
-        <TextBox IsReadOnly="True"
-                 Style="{StaticResource TextBoxesTheme}"
-                 Text="{Binding ModificationTime}"
-                 Background="{StaticResource BackgroundControlBrush}"/>
-        <TextBox IsReadOnly="True"
-                 Style="{StaticResource TextBoxesTheme}"
-                 Text="{Binding ChangedInfo}"
-                 Background="{StaticResource BackgroundControlBrush}"/>
-        <TextBox IsReadOnly="True"
-                 Style="{StaticResource TextBoxesTheme}"
-                 Text="{Binding ModificatedBy}"
-                 Background="{StaticResource BackgroundControlBrush}"/>
-    </StackPanel>
+             d:DesignHeight="60" d:DesignWidth="300"
+             Background="Transparent"
+             Style="{StaticResource ListViewItemTheme}">
+    <TextBox IsReadOnly="True"
+             Style="{StaticResource TextBoxesTheme}"
+             Text="{Binding FullName, Mode=OneWay}"
+             Background="{DynamicResource BackgroundControlBrush}"
+             VerticalAlignment="Center"/>
 </UserControl>

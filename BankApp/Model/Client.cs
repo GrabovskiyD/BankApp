@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using SQLite;
 
 namespace BankApp.Model
@@ -42,6 +43,7 @@ namespace BankApp.Model
             {
                 lastName = value;
                 OnPropertyChanged("LastName");
+                OnPropertyChanged("FullName");
             }
         }
         /// <summary>
@@ -57,6 +59,7 @@ namespace BankApp.Model
             {
                 firstName = value;
                 OnPropertyChanged("FirstName");
+                OnPropertyChanged("FullName");
             }
         }
         /// <summary>
@@ -72,7 +75,13 @@ namespace BankApp.Model
             {
                 middleName = value;
                 OnPropertyChanged("MiddleName");
+                OnPropertyChanged("FullName");
             }
+        }
+        [Ignore]
+        public string FullName
+        {
+            get { return LastName + " " + FirstName + " " + MiddleName; }
         }
         /// <summary>
         /// Номер мобильного телефона клиента /

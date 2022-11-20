@@ -25,7 +25,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
-                    <Border Background="{TemplateBinding Background}"
+                    <Border x:Name="TextBoxBorder" Background="{TemplateBinding Background}"
                             CornerRadius="10"
                             Margin="5, 10">
                         <TextBox Background="Transparent"
@@ -41,6 +41,13 @@
                              BorderBrush="{StaticResource BackgroundMainBrush}"
                              BorderThickness="0"
                              CaretBrush="{StaticResource ForegroundMainBrush}"/>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="ReadOnly"/>
+                                <VisualState x:Name="MouseOver" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
